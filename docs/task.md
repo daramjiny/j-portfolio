@@ -124,3 +124,20 @@
 # Task: Sync Context for Handoff
 - [x] Copy artifacts to docs/ folder <!-- id: 69 -->
 - [x] Push docs to GitHub <!-- id: 70 -->
+
+# Task: Refine Project Image
+- [ ] Remove background from project-gov.png (Replaced by new assets) <!-- id: 71 -->
+- [ ] Verify transparent image <!-- id: 72 -->
+
+# Task: Update Project Images
+- [x] Import new assets (nts, hsd, eucerin) in projects.ts <!-- id: 73 -->
+- [x] Assign images to respective projects <!-- id: 74 -->
+- [x] Verify images in browser <!-- id: 75 -->
+
+# Task: Add Additional PAGE Projects
+- [x] Import project-clear-thumb and project-olive-thumb <!-- id: 76 -->
+- [x] Add 'Clear Service Platform' and 'Olive Young Campaign' to projects.ts <!-- id: 77 -->
+
+# Task: Add SNS Projects
+- [x] Import Emart/GS/SSG thumbnails <!-- id: 78 -->
+- [x] Add Emart/GS/SSG projects to 'SNS' category in projects.ts <!-- id: 79 -->

@@ -1,27 +1,35 @@
-# Deployment Plan - GitHub Pages
+# Implement Mobile Mockup Slider
 
 ## Goal
-Deploy the React portfolio application to GitHub Pages to make it publicly accessible at `https://daramjiny.github.io/j-portfolio/`.
+Create a realistic mobile phone mockup component that displays a slideshow of images. This will be used in the `ProjectDetail` page to showcase mobile app designs or responsive views.
 
 ## User Review Required
-None. Standard deployment configuration.
+- Need mobile screen images (screenshots) to populate the slider.
 
 ## Proposed Changes
 
-### Configuration
-#### [MODIFY] [package.json](file:///Users/igyeongjin/Downloads/Modern%20Portfolio%20Site/package.json)
-- Add `"homepage": "https://daramjiny.github.io/j-portfolio/"`
-- Add `"predeploy": "npm run build"` to scripts
-- Add `"deploy": "gh-pages -d dist"` to scripts
+### Data
+#### [MODIFY] [projects.ts](file:///Users/igyeongjin/Downloads/Modern%20Portfolio%20Site/src/data/projects.ts)
+- Add `mobileImages?: string[]` to the `Project` interface.
+- Add sample data or placeholder images to one of the projects (e.g., `brand-identity-website` or `government-promo`) to test.
 
-#### [MODIFY] [vite.config.ts](file:///Users/igyeongjin/Downloads/Modern%20Portfolio%20Site/vite.config.ts)
-- Add `base: "/j-portfolio/"` to the configuration to ensure assets are loaded correctly.
+### Components
+#### [NEW] [PhoneMockup.tsx](file:///Users/igyeongjin/Downloads/Modern%20Portfolio%20Site/src/app/components/PhoneMockup.tsx)
+- **Container**: A styled `div` resembling a modern smartphone (rounded corners, bezel, notch/dynamic island).
+- **Screen**: Masked overflow area.
+- **Slider**: `motion.div` from `framer-motion`.
+    - **Features**: Drag support (`drag="x"`), snap-to-center (optional) or continuous scroll. Autoplay behavior can be added if requested.
+
+#### [MODIFY] [ProjectDetail.tsx](file:///Users/igyeongjin/Downloads/Modern%20Portfolio%20Site/src/app/pages/ProjectDetail.tsx)
+- Conditional Rendering in the Left Column:
+    - If `project.mobileImages` exists, render `<PhoneMockup images={project.mobileImages} />`.
+    - Else, render the current standard Image/DetailImage.
+- Styling: Center the mockup in the left column standard background (`bg-black/5`).
 
 ## Verification Plan
 
-### Automated
-- Run `npm run build` to ensure the project builds successfully.
-
-### Manual
-- Run `npm run deploy` and verify the output indicates success.
-- User will verify the deployed site URL.
+### Manual Verification
+- Add dummy mobile images to a project.
+- Open that project detail page.
+- Verify the phone mockup appears on the left.
+- Verify images can be dragged/slid horizontally.

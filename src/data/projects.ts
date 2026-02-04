@@ -12,13 +12,23 @@ export interface Project {
     year: string;
     category: Category;
     image: string;
+    detailImage?: string;
     gallery?: string[];
     client?: string;
     role?: string;
     link?: string;
 }
 
-import projectGov from '../assets/project-gov.png';
+import projectNtsThumb from '../assets/project-nts-thumb.jpg';
+import projectHsdThumb from '../assets/project-hsd-thumb.jpg';
+import projectHsdDetail from '../assets/project-hsd-detail.jpg';
+import projectEucerinThumb from '../assets/project-eucerin-thumb.jpg';
+import projectClearThumb from '../assets/project-clear-thumb.jpg';
+import projectOliveThumb from '../assets/project-olive-thumb.jpg';
+import projectEmartFaceThumb from '../assets/project-emartmallface-thumb.jpg';
+import projectEmartInsThumb from '../assets/project-emartmallins-thumb.jpg';
+import projectGsInsThumb from '../assets/project-gsfreshins-thumb.jpg';
+import projectSsgBandThumb from '../assets/project-ssgband-thumb.jpg';
 
 export const projects: Project[] = [
     {
@@ -29,7 +39,7 @@ export const projects: Project[] = [
         tags: ["Public Sector", "Landing Page", "Responsive", "Accessibility"],
         year: "2024",
         category: "PAGE",
-        image: projectGov,
+        image: projectNtsThumb,
         client: "National Tax Service",
         role: "UI/UX Designer",
     },
@@ -41,7 +51,8 @@ export const projects: Project[] = [
         tags: ["Branding", "UI/UX", "Figma", "Web Design"],
         year: "2024",
         category: "PAGE",
-        image: "https://images.unsplash.com/photo-1687825512118-5ee2ddded118?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pbWFsJTIwZmFzaGlvbiUyMHdlYnNpdGV8ZW58MXx8fHwxNzY4MzgxMDkyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+        image: projectHsdThumb,
+        detailImage: projectHsdDetail,
         client: "EcoStyle Inc.",
         role: "Lead Designer & Developer",
     },
@@ -53,9 +64,73 @@ export const projects: Project[] = [
         tags: ["Landing Page", "Responsive", "Figma", "Animation"],
         year: "2024",
         category: "PAGE",
-        image: "https://images.unsplash.com/photo-1751831798147-a8c0b2bd9464?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBjb3NtZXRpY3MlMjBwcm9kdWN0fGVufDF8fHx8MTc2ODM4MTA5Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+        image: projectEucerinThumb,
         client: "Lumière Beauty",
         role: "UI/UX Designer",
+    },
+    {
+        id: "clear-project",
+        title: "Clear Service Platform",
+        description: "User-friendly service platform design focusing on clarity and ease of use.",
+        fullDescription: "A comprehensive design project for a service platform, emphasizing a clean and intuitive user interface to maximize user engagement and satisfaction.",
+        tags: ["Service Design", "UI/UX", "Web Platform"],
+        year: "2024",
+        category: "PAGE",
+        image: projectClearThumb,
+        client: "Clear Corp",
+        role: "UI Designer",
+    },
+    {
+        id: "olive-young-campaign",
+        title: "Olive Young Campaign",
+        description: "Promotional campaign page for a leading health & beauty retailer.",
+        fullDescription: "Designed a vibrant event page for Olive Young, featuring interactive elements and promotional banners to drive customer engagement and sales.",
+        tags: ["Event Page", "Promotion", "Retail"],
+        year: "2024",
+        category: "PAGE",
+        image: projectOliveThumb,
+        client: "Olive Young",
+        role: "Web Designer",
+    },
+    {
+        id: "emart-mall-face",
+        title: "Emart Mall Facebook Content",
+        description: "Engaging Facebook content series for Emart Mall.",
+        tags: ["SNS", "Facebook", "Marketing"],
+        year: "2024",
+        category: "SNS",
+        image: projectEmartFaceThumb,
+        client: "Emart Mall",
+    },
+    {
+        id: "emart-mall-insta",
+        title: "Emart Mall Instagram",
+        description: "Visual Instagram feed curation and post design.",
+        tags: ["SNS", "Instagram", "Visual Design"],
+        year: "2024",
+        category: "SNS",
+        image: projectEmartInsThumb,
+        client: "Emart Mall",
+    },
+    {
+        id: "gs-fresh-insta",
+        title: "GS Fresh Instagram",
+        description: "Fresh and vibrant Instagram content for GS Fresh.",
+        tags: ["SNS", "Instagram", "Branding"],
+        year: "2024",
+        category: "SNS",
+        image: projectGsInsThumb,
+        client: "GS Fresh",
+    },
+    {
+        id: "ssg-band",
+        title: "SSG Band Content",
+        description: "Community engagement content for SSG Band.",
+        tags: ["SNS", "Community", "Design"],
+        year: "2024",
+        category: "SNS",
+        image: projectSsgBandThumb,
+        client: "SSG",
     },
     {
         id: "product-launch-banner",

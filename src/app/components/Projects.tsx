@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 export function Projects() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
   const [selectedCategory, setSelectedCategory] = useState<Category>("ALL");
 
   const categories: Category[] = ["ALL", "PAGE", "BANNER", "SNS", "VIDEO"];

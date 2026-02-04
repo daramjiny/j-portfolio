@@ -35,10 +35,10 @@ export function ProjectDetail() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="min-h-screen bg-white"
+            className="bg-white"
         >
-            {/* Navigation */}
-            <nav className="fixed top-0 left-0 w-full z-50 px-6 lg:px-12 py-6">
+            {/* Navigation - Fixed */}
+            <nav className="fixed top-6 left-6 z-50">
                 <Link
                     to="/#projects"
                     className="inline-flex p-3 bg-white/80 backdrop-blur-md rounded-full border border-black/5 hover:bg-white hover:scale-105 transition-all shadow-sm text-black"
@@ -47,125 +47,114 @@ export function ProjectDetail() {
                 </Link>
             </nav>
 
-            <main className="pt-24 pb-24 px-6 lg:px-12">
-                <div className="max-w-7xl mx-auto space-y-16">
-                    {/* Header */}
-                    <div className="space-y-8">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                            className="space-y-4"
-                        >
-                            <div className="flex items-center gap-4 text-sm text-black/60">
-                                <span className="px-3 py-1 bg-black/5 rounded-full tracking-wide">
-                                    {project.category}
-                                </span>
-                                <span className="tracking-widest uppercase">{project.year}</span>
-                            </div>
-                            <h1 className="text-4xl lg:text-6xl xl:text-7xl font-medium tracking-tight leading-tight">
-                                {project.title}
-                            </h1>
-                        </motion.div>
+            <div className="lg:grid lg:grid-cols-2 min-h-screen">
+                {/* Visual Column (Left) - Scrolls naturally with full height */}
+                <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="relative h-auto min-h-[40vh] lg:min-h-screen bg-black/5 order-1 lg:order-1"
+                >
+                    <img
+                        src={project.detailImage || project.image}
+                        alt={project.title}
+                        className="w-full h-auto block"
+                    />
+                </motion.div>
 
-                        {/* Project Info Grid */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
-                            className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-y border-black/5"
-                        >
-                            <div className="space-y-2">
-                                <div className="flex items-center gap-2 text-black/50 text-sm">
-                                    <User className="w-4 h-4" />
-                                    <span className="uppercase tracking-wider">Client</span>
+                {/* Content Column (Right) - Sticky Sidebar */}
+                <div className="order-2 lg:order-2 flex flex-col lg:sticky lg:top-0 lg:self-start h-full">
+                    <main className="flex-1 px-6 py-12 lg:px-16 lg:py-24 max-w-2xl mx-auto w-full">
+                        <div className="space-y-16">
+                            {/* Header */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6 }}
+                                className="space-y-6"
+                            >
+                                <div className="flex items-center gap-4 text-sm text-black/60">
+                                    <span className="px-3 py-1 bg-black/5 rounded-full tracking-wide">
+                                        {project.category}
+                                    </span>
+                                    <span className="tracking-widest uppercase">{project.year}</span>
                                 </div>
-                                <p className="font-medium">{project.client || "Personal Project"}</p>
-                            </div>
-                            <div className="space-y-2">
-                                <div className="flex items-center gap-2 text-black/50 text-sm">
-                                    <Briefcase className="w-4 h-4" />
-                                    <span className="uppercase tracking-wider">Role</span>
-                                </div>
-                                <p className="font-medium">{project.role || "Designer"}</p>
-                            </div>
-                            <div className="space-y-2">
-                                <div className="flex items-center gap-2 text-black/50 text-sm">
-                                    <Calendar className="w-4 h-4" />
-                                    <span className="uppercase tracking-wider">Year</span>
-                                </div>
-                                <p className="font-medium">{project.year}</p>
-                            </div>
-                            <div className="space-y-2">
-                                <span className="uppercase tracking-wider text-black/50 text-sm block mb-2">
-                                    Links
-                                </span>
-                                <div className="flex gap-2">
-                                    <button className="p-2 bg-black text-white rounded-full hover:bg-black/80 transition-colors">
-                                        <ExternalLink className="w-4 h-4" />
-                                    </button>
-                                    <button className="p-2 border border-black/10 rounded-full hover:bg-black/5 transition-colors">
-                                        <Github className="w-4 h-4" />
-                                    </button>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
+                                <h1 className="text-4xl lg:text-5xl font-medium tracking-tight leading-tight text-balance">
+                                    {project.title}
+                                </h1>
+                            </motion.div>
 
-                    {/* Hero Image */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        className="aspect-video w-full rounded-3xl overflow-hidden bg-black/5"
-                    >
-                        <img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full h-full object-cover"
-                        />
-                    </motion.div>
+                            {/* Info Grid */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.1 }}
+                                className="grid grid-cols-1 sm:grid-cols-3 gap-8 py-8 border-y border-black/5"
+                            >
+                                <div className="space-y-1">
+                                    <div className="flex items-center gap-2 text-black/50 text-xs uppercase tracking-wider">
+                                        <User className="w-3 h-3 text-black/40" />
+                                        <span>Client</span>
+                                    </div>
+                                    <p className="font-medium text-sm lg:text-base">{project.client || "Personal Project"}</p>
+                                </div>
+                                <div className="space-y-1">
+                                    <div className="flex items-center gap-2 text-black/50 text-xs uppercase tracking-wider">
+                                        <Briefcase className="w-3 h-3 text-black/40" />
+                                        <span>Role</span>
+                                    </div>
+                                    <p className="font-medium text-sm lg:text-base">{project.role || "Designer"}</p>
+                                </div>
+                                <div className="space-y-1">
+                                    <div className="flex items-center gap-2 text-black/50 text-xs uppercase tracking-wider">
+                                        <Calendar className="w-3 h-3 text-black/40" />
+                                        <span>Year</span>
+                                    </div>
+                                    <p className="font-medium text-sm lg:text-base">{project.year}</p>
+                                </div>
+                            </motion.div>
 
-                    {/* Content */}
-                    <div className="grid lg:grid-cols-3 gap-12 lg:gap-24">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.6 }}
-                            className="lg:col-span-2 space-y-8"
-                        >
-                            <h2 className="text-2xl font-medium">Overview</h2>
-                            <p className="text-lg text-black/70 leading-relaxed text-balance">
-                                {project.fullDescription || project.description}
-                            </p>
-                            <p className="text-lg text-black/70 leading-relaxed text-balance">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </p>
-                        </motion.div>
+                            {/* Overview */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.2 }}
+                                className="space-y-6"
+                            >
+                                <h3 className="text-lg font-medium">Overview</h3>
+                                <p className="text-base lg:text-lg text-black/70 leading-relaxed text-balance">
+                                    {project.fullDescription || project.description}
+                                </p>
+                                <p className="text-base lg:text-lg text-black/70 leading-relaxed text-balance">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                </p>
+                            </motion.div>
 
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.8 }}
-                            className="space-y-8"
-                        >
-                            <div className="space-y-4">
+                            {/* Tech Stack */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.3 }}
+                                className="space-y-4"
+                            >
                                 <h3 className="text-lg font-medium">Technologies</h3>
                                 <div className="flex flex-wrap gap-2">
                                     {project.tags.map((tag) => (
                                         <span
                                             key={tag}
-                                            className="px-4 py-2 bg-black/5 text-black/70 rounded-full text-sm"
+                                            className="px-3 py-1.5 bg-black/5 text-black/70 rounded-full text-sm"
                                         >
                                             {tag}
                                         </span>
                                     ))}
                                 </div>
-                            </div>
-                        </motion.div>
-                    </div>
+                            </motion.div>
+                        </div>
+                    </main>
+
                 </div>
-            </main>
+            </div>
+
             <Footer />
         </motion.div>
     );

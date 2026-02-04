@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "@/app/pages/Home";
 import { ProjectDetail } from "@/app/pages/ProjectDetail";
 import { ScrollToTop } from "@/app/components/ScrollToTop"; // We'll create this helper
