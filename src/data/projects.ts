@@ -29,6 +29,11 @@ import projectEmartFaceThumb from '../assets/project-emartmallface-thumb.jpg';
 import projectEmartInsThumb from '../assets/project-emartmallins-thumb.jpg';
 import projectGsInsThumb from '../assets/project-gsfreshins-thumb.jpg';
 import projectSsgBandThumb from '../assets/project-ssgband-thumb.jpg';
+import projectHimartMoThumb from '../assets/project-himartmo-thumb.jpg';
+import projectSsgMallMoThumb from '../assets/project-ssgmallmo-thumb.jpg';
+import projectGsFreshMoThumb from '../assets/project-gsfreshmo-thumb.jpg';
+import projectGsFreshEventThumb from '../assets/project-gsfreshmo2-thumb.jpg';
+import projectGsFreshPetThumb from '../assets/project-gsfreshpetins-thumb.jpg';
 
 export const projects: Project[] = [
     {
@@ -91,6 +96,57 @@ export const projects: Project[] = [
         image: projectOliveThumb,
         client: "Olive Young",
         role: "Web Designer",
+    },
+    // New Projects Added
+    {
+        id: "himart-mobile",
+        title: "Hi-Mart Mobile App",
+        description: "Mobile application interface design for electronics retailer.",
+        tags: ["Mobile", "Commerce", "App Design"],
+        year: "2024",
+        category: "BANNER",
+        image: projectHimartMoThumb,
+        client: "Lotte Hi-Mart",
+    },
+    {
+        id: "ssg-mall-renewal",
+        title: "SSG Mall Renewal",
+        description: "Mobile renewal project for SSG.com shopping platform.",
+        tags: ["Mobile", "Commerce", "UI/UX"],
+        year: "2024",
+        category: "BANNER",
+        image: projectSsgMallMoThumb,
+        client: "SSG.COM",
+    },
+    {
+        id: "gs-fresh-event",
+        title: "GS Fresh Event Page",
+        description: "Promotional event page design for GS Fresh.",
+        tags: ["Event", "Mobile", "Promotion"],
+        year: "2024",
+        category: "BANNER",
+        image: projectGsFreshEventThumb,
+        client: "GS Fresh",
+    },
+    {
+        id: "gs-fresh-mobile",
+        title: "GS Fresh Mobile App",
+        description: "Fresh food delivery mobile application design.",
+        tags: ["Mobile", "Fresh Food", "App Design"],
+        year: "2024",
+        category: "BANNER",
+        image: projectGsFreshMoThumb,
+        client: "GS Fresh",
+    },
+    {
+        id: "gs-fresh-pet",
+        title: "GS Fresh Pet",
+        description: "Social media content for pet category promotion.",
+        tags: ["Instagram", "Pet", "Social Media"],
+        year: "2024",
+        category: "SNS",
+        image: projectGsFreshPetThumb,
+        client: "GS Fresh",
     },
     {
         id: "emart-mall-face",

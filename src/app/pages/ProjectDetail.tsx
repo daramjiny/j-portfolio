@@ -4,6 +4,7 @@ import { ArrowLeft, ExternalLink, Github, Calendar, User, Briefcase } from "luci
 import { projects } from "@/data/projects";
 import { useEffect } from "react";
 import { Footer } from "@/app/components/Footer";
+import { LockScreenSlider } from "@/app/components/LockScreenSlider";
 
 export function ProjectDetail() {
     const { id } = useParams();
@@ -53,13 +54,20 @@ export function ProjectDetail() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="relative h-auto min-h-[40vh] lg:min-h-screen bg-black/5 order-1 lg:order-1"
+                    className={`relative h-auto min-h-[40vh] lg:min-h-screen order-1 lg:order-1 ${project.id === "himart-mobile" ? "bg-white" : "bg-black/5"
+                        }`}
                 >
-                    <img
-                        src={project.detailImage || project.image}
-                        alt={project.title}
-                        className="w-full h-auto block"
-                    />
+                    {project.id === "himart-mobile" ? (
+                        <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+                            <LockScreenSlider />
+                        </div>
+                    ) : (
+                        <img
+                            src={project.detailImage || project.image}
+                            alt={project.title}
+                            className="w-full h-auto block"
+                        />
+                    )}
                 </motion.div>
 
                 {/* Content Column (Right) - Sticky Sidebar */}
