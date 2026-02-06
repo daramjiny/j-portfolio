@@ -34,6 +34,18 @@ import projectSsgMallMoThumb from '../assets/project-ssgmallmo-thumb.jpg';
 import projectGsFreshMoThumb from '../assets/project-gsfreshmo-thumb.jpg';
 import projectGsFreshEventThumb from '../assets/project-gsfreshmo2-thumb.jpg';
 import projectGsFreshPetThumb from '../assets/project-gsfreshpetins-thumb.jpg';
+import projectBbKakaoThumb from '../assets/project-bbkakao-thumb.jpg';
+import projectCjDaumThumb from '../assets/project-cjdaum-thumb.jpg';
+import projectSsgNaverPcThumb from '../assets/project-ssgnaverpc-thumb.jpg';
+import projectTgBannerThumb from '../assets/project-tgbanner-thumb.jpg';
+import projectDmBandThumb from '../assets/project-dmband-thumb.jpg';
+import projectMtBandThumb from '../assets/project-mtband-thumb.jpg';
+import projectFashionAppThumb from '../assets/project-fashionapp-thumb.jpg';
+import projectOttAppThumb from '../assets/project-ottapp-thumb.jpg';
+import projectJjangyouThumb from '../assets/project-jjangyou-thumb.jpg';
+import projectModetourThumb from '../assets/project-modetour-thumb.jpg';
+import projectSiwonPakThumb from '../assets/project-siwonpak-thumb.jpg';
+import projectSiwonProThumb from '../assets/project-siwonpro-thumb.jpg';
 
 export const projects: Project[] = [
     {
@@ -189,57 +201,124 @@ export const projects: Project[] = [
         client: "SSG",
     },
     {
-        id: "product-launch-banner",
-        title: "Product Launch Banner",
-        description: "Dynamic promotional banner series for new product launch across multiple platforms and screen sizes.",
-        tags: ["Banner Design", "Marketing", "Photoshop", "Motion"],
-        year: "2024",
-        category: "BANNER",
-        image: "https://images.unsplash.com/photo-1762325393954-5300a6e35f5b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9tb3Rpb25hbCUyMGJhbm5lciUyMGRlc2lnbnxlbnwxfHx8fDE3NjgzODEwOTJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    },
-    {
-        id: "seasonal-campaign-banner",
-        title: "Seasonal Campaign Banner",
-        description: "Eye-catching seasonal campaign banners with interactive elements and strong call-to-action design.",
-        tags: ["Campaign", "Banner", "Adobe XD", "Visual Design"],
-        year: "2023",
-        category: "BANNER",
-        image: "https://images.unsplash.com/photo-1766233419934-27e9a04da5d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzZWFzb25hbCUyMG1hcmtldGluZyUyMGNhbXBhaWdufGVufDF8fHx8MTc2ODM4MTA5M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    },
-    {
-        id: "instagram-content-series",
-        title: "Instagram Content Series",
-        description: "Cohesive social media content design including posts, stories, and reels for brand consistency.",
-        tags: ["Instagram", "Social Media", "Illustrator", "Branding"],
+        id: "dm-band-content",
+        title: "DM Band Content",
+        description: "Community-focused SNS content design for DM Band.",
+        tags: ["SNS", "Community", "Design"],
         year: "2024",
         category: "SNS",
-        image: "https://images.unsplash.com/photo-1621184078903-6bfe9482d935?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbnN0YWdyYW0lMjBzb2NpYWwlMjBtZWRpYXxlbnwxfHx8fDE3NjgzMjk4MDN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+        image: projectDmBandThumb,
+        client: "DM Band",
     },
     {
-        id: "social-media-templates",
-        title: "Social Media Templates",
-        description: "Versatile template system for daily social media posts with customizable layouts and color schemes.",
-        tags: ["Templates", "SNS", "Figma", "Design System"],
-        year: "2023",
+        id: "mt-band-content",
+        title: "MT Band Content",
+        description: "Engaging SNS content series for MT Band community.",
+        tags: ["SNS", "Community", "Design"],
+        year: "2024",
         category: "SNS",
-        image: "https://images.unsplash.com/photo-1521572089244-e5aaacacca6b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2NpYWwlMjBtZWRpYSUyMHRlbXBsYXRlfGVufDF8fHx8MTc2ODM4MTA5NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+        image: projectMtBandThumb,
+        client: "MT Band",
     },
     {
-        id: "brand-motion-graphics",
-        title: "Brand Motion Graphics",
-        description: "Animated brand story video with smooth transitions and engaging visual storytelling for company introduction.",
-        tags: ["Motion Design", "After Effects", "Video", "Animation"],
+        id: "bbq-kakao-promotion",
+        title: "BBQ Kakao Promotion",
+        description: "Promotional banner campaign for BBQ on KakaoTalk.",
+        tags: ["Banner", "Promotion", "Mobile"],
+        year: "2024",
+        category: "BANNER",
+        image: projectBbKakaoThumb,
+        client: "BBQ",
+    },
+    {
+        id: "cj-daum-banner",
+        title: "CJ Daum Banner",
+        description: "CJ Group promotional banner displayed on Daum portal.",
+        tags: ["Banner", "Web", "Promotion"],
+        year: "2024",
+        category: "BANNER",
+        image: projectCjDaumThumb,
+        client: "CJ CheilJedang",
+    },
+    {
+        id: "ssg-naver-pc-banner",
+        title: "SSG Naver PC Banner",
+        description: "Large scale PC banner for SSG.com on Naver main page.",
+        tags: ["Banner", "PC", "Naver"],
+        year: "2024",
+        category: "BANNER",
+        image: projectSsgNaverPcThumb,
+        client: "SSG.COM",
+    },
+    {
+        id: "tg-banner-campaign",
+        title: "TG Banner Campaign",
+        description: "Digital banner campaign for TG brand awareness.",
+        tags: ["Banner", "Campaign", "Digital"],
+        year: "2024",
+        category: "BANNER",
+        image: projectTgBannerThumb,
+        client: "TG",
+    },
+
+    {
+        id: "fashion-app-video",
+        title: "Fashion App Video",
+        description: "Short-form promo video for a fashion app launch.",
+        tags: ["Video", "Motion", "Promo"],
         year: "2024",
         category: "VIDEO",
-        image: "https://images.unsplash.com/photo-1501780392773-287d506245a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3Rpb24lMjBncmFwaGljcyUyMHZpZGVvfGVufDF8fHx8MTc2ODM4MTA5NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+        image: projectFashionAppThumb,
+        client: "Fashion App",
     },
     {
-        id: "product-demo-video",
-        title: "Product Demo Video",
-        description: "Interactive product demonstration video with clean animations and user-friendly visual explanations.",
-        tags: ["Video Editing", "Motion", "Tutorial", "UI Animation"],
-        year: "2023",
+        id: "ott-app-video",
+        title: "OTT App Video",
+        description: "Explainer motion video highlighting key OTT app features.",
+        tags: ["Video", "Motion", "Explainer"],
+        year: "2024",
         category: "VIDEO",
-        image: "https://images.unsplash.com/photo-1750056393356-d1de9d222a29?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9kdWN0JTIwZGVtbyUyMHNjcmVlbnxlbnwxfHx8fDE3NjgzODEwOTR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+        image: projectOttAppThumb,
+        client: "OTT App",
+    },
+    {
+        id: "jjangyou-promotion",
+        title: "Jjangyou Noodle Promotion",
+        description: "Promotional page design for Jjangyou Noodle brand.",
+        tags: ["Web", "F&B", "Promotion"],
+        year: "2023",
+        category: "SNS",
+        image: projectJjangyouThumb,
+        client: "Jjangyou",
+    },
+    {
+        id: "modetour-event",
+        title: "Modetour Travel Event",
+        description: "Seasonal travel event page for Modetour.",
+        tags: ["Event", "Travel", "Web"],
+        year: "2023",
+        category: "PAGE",
+        image: projectModetourThumb,
+        client: "Modetour",
+    },
+    {
+        id: "siwon-school-campaign",
+        title: "Siwon School Campaign",
+        description: "Marketing campaign banners for Siwon School.",
+        tags: ["Banner", "Education", "Marketing"],
+        year: "2023",
+        category: "PAGE",
+        image: projectSiwonPakThumb,
+        client: "Siwon School",
+    },
+    {
+        id: "siwon-school-pro",
+        title: "Siwon School Pro",
+        description: "B2B professional education service promotion.",
+        tags: ["Banner", "B2B", "Education"],
+        year: "2023",
+        category: "PAGE",
+        image: projectSiwonProThumb,
+        client: "Siwon School",
     },
 ];
