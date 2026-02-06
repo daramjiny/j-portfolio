@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
-import { useRef, useState } from "react";
+import { useRef, useState, useMemo } from "react";
 import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { projects, Category } from "@/data/projects";
@@ -13,9 +13,20 @@ export function Projects() {
 
   const categories: Category[] = ["ALL", "PAGE", "BANNER", "SNS", "VIDEO"];
 
+  // Shuffle projects on mount
+  const shuffledProjects = useMemo(() => {
+    const shuffled = [...projects];
+    // Fisher-Yates shuffle
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }, []);
+
   const filteredProjects = selectedCategory === "ALL"
-    ? projects
-    : projects.filter(project => project.category === selectedCategory);
+    ? shuffledProjects
+    : shuffledProjects.filter(project => project.category === selectedCategory);
 
   return (
     <section id="projects" ref={ref} className="min-h-screen flex items-center px-6 lg:px-12 py-24">
