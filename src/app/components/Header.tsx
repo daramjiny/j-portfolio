@@ -30,7 +30,7 @@ export function Header() {
         className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-black/5"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between h-16 lg:h-20">
+          <div className="flex items-center justify-between h-12 lg:h-14">
             <motion.a
               href="#"
               className="text-xl font-medium tracking-tight"
@@ -40,20 +40,23 @@ export function Header() {
               Portfolio
             </motion.a>
 
-            {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8">
               {menuItems.map((item, index) => (
-                <motion.button
+                <motion.div
                   key={item.href}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-sm tracking-wide text-black/70 hover:text-black transition-colors"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 + 0.3 }}
-                  whileHover={{ y: -2 }}
                 >
-                  {item.label}
-                </motion.button>
+                  <motion.button
+                    onClick={() => scrollToSection(item.href)}
+                    className="text-sm tracking-wide text-black/70 hover:text-black transition-colors"
+                    whileHover={{ y: -2 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {item.label}
+                  </motion.button>
+                </motion.div>
               ))}
             </nav>
 

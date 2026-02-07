@@ -3,7 +3,7 @@ import { useInView } from "motion/react";
 import { useRef } from "react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import aboutProfile from "@/assets/about-profile.jpg";
-import aboutShape from "@/assets/about-shape.png";
+import aboutShape from "@/assets/about-shape-blur-clean.png";
 
 export function About() {
   const ref = useRef(null);
@@ -63,10 +63,10 @@ export function About() {
             </div>
             <motion.img
               src={aboutShape}
-              alt="Decorative shape"
-              className="absolute -bottom-28 -right-28 w-64 h-64 z-20"
+              alt="Decorative glass shape"
+              className="absolute -bottom-28 -right-28 w-64 h-64 z-20 mix-blend-multiply opacity-80"
               animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
             />
           </motion.div>
         </div>

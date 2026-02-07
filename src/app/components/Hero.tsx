@@ -10,10 +10,9 @@ export function Hero() {
         className="w-full h-full"
       >
         <iframe
-          src="https://my.spline.design/shapethevibe-ZUWHZpVhbgTFFmIHutCpRF8k-Alw/"
-          frameBorder="0"
-          width="100%"
-          height="100%"
+          src="https://my.spline.design/windherocopycopy-gXkfIjcVT3ZrJVd7S0rgzisU-dQs/"
+          style={{ width: "100vw", height: "100vh", border: "none" }}
+          className="absolute top-0 left-0"
           title="Spline 3D Design"
         />
       </motion.div>

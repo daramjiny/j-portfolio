@@ -141,3 +141,19 @@
 # Task: Add SNS Projects
 - [x] Import Emart/GS/SSG thumbnails <!-- id: 78 -->
 - [x] Add Emart/GS/SSG projects to 'SNS' category in projects.ts <!-- id: 79 -->
+
+# Task: Debug and Optimize Animations
+- [x] Fix Syntax Errors in Projects.tsx (Missing closing motion.div) <!-- id: 80 -->
+- [x] Implement Wrapper Strategy for Projects (Entrance: 0.8s, Hover: 0.2s) <!-- id: 81 -->
+- [x] Implement Wrapper Strategy for Skills.tsx <!-- id: 82 -->
+- [x] Implement Wrapper Strategy for Experience.tsx <!-- id: 83 -->
+- [x] Verify Stability and Performance <!-- id: 84 -->
+
+# Task: Debug and Optimize Animations
+- [x] Fix Syntax Errors in Projects.tsx (Missing closing motion.div) <!-- id: 80 -->
+- [x] Implement Wrapper Strategy for Projects (Entrance: 0.8s, Hover: 0.2s) <!-- id: 81 -->
+- [x] Implement Wrapper Strategy for Skills.tsx <!-- id: 82 -->
+- [x] Implement Wrapper Strategy for Experience.tsx <!-- id: 83 -->
+- [x] Verify Stability and Performance <!-- id: 84 -->
+
+

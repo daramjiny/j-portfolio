@@ -62,24 +62,28 @@ export function Experience() {
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              whileHover={{ x: 5 }}
-              className="group bg-white p-8 rounded-2xl border border-black/5 hover:border-black/20 transition-all"
             >
-              <div className="flex gap-6">
-                <div className="flex-shrink-0">
-                  <div className="p-3 bg-black rounded-xl group-hover:scale-110 transition-transform">
-                    <exp.icon className="w-6 h-6 text-white" />
+              <motion.div
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.2 }}
+                className="group bg-white p-8 rounded-2xl border border-black/5 hover:border-black/20 transition-all"
+              >
+                <div className="flex gap-6">
+                  <div className="flex-shrink-0">
+                    <div className="p-3 bg-black rounded-xl group-hover:scale-110 transition-transform">
+                      <exp.icon className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-2">
+                      <h3 className="text-xl font-medium">{exp.position}</h3>
+                      <span className="text-sm text-black/40 tracking-wide">{exp.period}</span>
+                    </div>
+                    {exp.company && <p className="text-black/60 font-medium mb-3">{exp.company}</p>}
+                    <p className="text-black/60 leading-relaxed">{exp.description}</p>
                   </div>
                 </div>
-                <div className="flex-1">
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-2">
-                    <h3 className="text-xl font-medium">{exp.position}</h3>
-                    <span className="text-sm text-black/40 tracking-wide">{exp.period}</span>
-                  </div>
-                  {exp.company && <p className="text-black/60 font-medium mb-3">{exp.company}</p>}
-                  <p className="text-black/60 leading-relaxed">{exp.description}</p>
-                </div>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>

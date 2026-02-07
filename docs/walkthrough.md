@@ -1,42 +1,42 @@
-# Walkthrough - Visual Refinements & Verification
+# Spline Hero Section Implementation
 
-I have finalized the designs for the Contact and Footer sections, refined the Project Detail page layout, and added multiple new projects to the portfolio.
+## Summary
+Successfully implemented a responsive 3D Hero section using Spline.
 
-## 1. Project Detail Page Redesign
-- **Split Screen Layout**: Implemented a two-column layout on Desktop.
-  - **Left**: Full-height scrollable image column.
-  - **Right**: Sticky sidebar for project information, ensuring content remains visible while scrolling long images.
-  - **Scroll Behavior**: Removed nested scrollbars; the page now uses the main window scroll for a natural experience (Yucca style).
-- **Footer Placement**: Moved the footer to the bottom of the page, outside the split-screen grid.
-- **Data Layout**: Removed the 'Links' section and reorganized Client/Role/Year into a 3-column grid.
+## Key Challenges & Solutions
+1.  **Responsiveness**: The Spline embedding was not scaling correctly on mobile devices.
+    -   **Solution (Code side)**:
+        -   Used `iframe` with `width: 100vw` and `height: 100vh` to force viewport coverage.
+        -   Added CSS centering: `top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`.
+    -   **Solution (Spline side)**:
+        -   User enabled **"Responsive"** in Export settings.
+        -   User unlocked the **Frame Size** (removed fixed pixel width).
+        -   User enabled the **"Cover"** option in Export settings, which scales content to fill the screen without distortion.
 
-## 2. New Projects Added
-Added 6 new projects to the portfolio:
-### PAGE Category
-- **Clear Service Platform**: `project-clear-thumb.jpg`
-- **Olive Young Campaign**: `project-olive-thumb.jpg`
+## Final Implementation
+-   **File**: `src/app/components/Hero.tsx`
+-   **Technique**: Fullscreen `iframe` with Spline-side responsive configuration.
+-   **Outcome**: The 3D scene now correctly covers the entire screen on all device sizes without cropping or distortion.
 
-### SNS Category
-- **Emart Mall Facebook Content**: `project-emartmallface-thumb.jpg`
-- **Emart Mall Instagram**: `project-emartmallins-thumb.jpg`
-- **GS Fresh Instagram**: `project-gsfreshins-thumb.jpg`
-- **SSG Band Content**: `project-ssgband-thumb.jpg`
+# Animation Optimization & Stability Fixes
 
-## 3. Bug Fixes & Refinements
-- **Visibility Fix**: Adjusted the `useInView` threshold in `Projects.tsx` to ensuring the header title appears correctly even when the section is long.
-- **Mobile Mockup Revert**: Experimented with a mobile mockup slider but reverted to the cleaner static image layout per user preference.
+## Summary
+Resolved persistent application crashes caused by malformed JSX in `Projects.tsx`. Implemented a comprehensive "Wrapper Strategy" across all major interactive components to decouple entrance animations (slow/smooth) from hover effects (fast/snappy).
 
-## 4. Contact Section Refinements
-- **Changes**:
-  - **Title**: Restored to "Get In Touch".
-  - **Layout**: Minimalist design with a large, single-line email address (`jjinyee01@gmail.com`).
-  - **Spacing**: Removed excessive vertical margins (`min-h-screen`) for a balanced look.
-  - **Button**: Added a "Send Message" button.
+## Key Changes
+1.  **Wrapper Strategy**:
+    -   Separated the `motion.div` responsibilities:
+        -   **Outer Wrapper**: Handles the entrance animation (e.g., `opacity: 0` -> `1`, `duration: 0.8s`).
+        -   **Inner Component**: Handles the interactive hover effects (e.g., `whileHover`, `duration: 0.2s`).
+    -   This prevents the slow entrance transition from overriding or lagging the fast hover transition.
 
-### Verification Screenshot
-![Contact Section](/Users/igyeongjin/.gemini/antigravity/brain/894dbe1a-feae-4989-acdc-b2da5e8636e4/contact_section_1769798805047.png)
+2.  **Component Updates**:
+    -   **`Projects.tsx`**: Fixed critical syntax error (missing closing tags) that crashed the build. Applied wrapper strategy to project cards.
+    -   **`Skills.tsx`**: Refactored to use the wrapper strategy for skill cards.
+    -   **`Experience.tsx`**: Refactored to use the wrapper strategy for experience items.
+    -   **`Header.tsx`**: Confirmed wrapper strategy for menu items.
 
-## 5. Deployment Success
-- **Action**: Deployed the site to GitHub Pages.
-- **URL**: [https://daramjiny.github.io/j-portfolio/](https://daramjiny.github.io/j-portfolio/)
-- **Fix**: Switched to `HashRouter` to resolve routing issues on static hosting.
+## Outcome
+-   **Stability**: The application build is fixed and stable.
+-   **Performance**: Hover effects are now instant and snappy, unrelated to the initial load animation speed.
+-   **Consistency**: All sections now share a unified animation logic and feel.

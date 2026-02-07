@@ -56,28 +56,32 @@ export function Skills() {
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="group bg-white p-8 rounded-2xl border border-black/5 hover:border-black/20 transition-all"
               >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-black rounded-xl group-hover:scale-110 transition-transform">
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-medium mb-2">{skill.title}</h3>
-                    <p className="text-black/60 mb-4">{skill.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {skill.items.map((item) => (
-                        <span
-                          key={item}
-                          className="px-3 py-1 text-xs tracking-wide bg-black/5 rounded-full"
-                        >
-                          {item}
-                        </span>
-                      ))}
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  transition={{ duration: 0.2 }}
+                  className="group bg-white p-8 rounded-2xl border border-black/5 hover:border-black/20 transition-all h-full"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 bg-black rounded-xl group-hover:scale-110 transition-transform">
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-medium mb-2">{skill.title}</h3>
+                      <p className="text-black/60 mb-4">{skill.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {skill.items.map((item) => (
+                          <span
+                            key={item}
+                            className="px-3 py-1 text-xs tracking-wide bg-black/5 rounded-full"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
             );
           })}
