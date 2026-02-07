@@ -62,6 +62,7 @@ export function Experience() {
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.1 }}
+              style={{ willChange: "transform" }}
             >
               <motion.div
                 whileHover={{ x: 5 }}

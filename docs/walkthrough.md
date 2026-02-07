@@ -36,7 +36,22 @@ Resolved persistent application crashes caused by malformed JSX in `Projects.tsx
     -   **`Experience.tsx`**: Refactored to use the wrapper strategy for experience items.
     -   **`Header.tsx`**: Confirmed wrapper strategy for menu items.
 
-## Outcome
--   **Stability**: The application build is fixed and stable.
 -   **Performance**: Hover effects are now instant and snappy, unrelated to the initial load animation speed.
 -   **Consistency**: All sections now share a unified animation logic and feel.
+
+# Safari Performance Optimization
+
+## Summary
+To address perceived stuttering on Safari (caused by strict power management and different compositing logic compared to Chrome), we applied hardware acceleration hints.
+
+## Technique
+-   **CSS Property**: Added `style={{ willChange: "transform" }}` to key animated elements (`motion.div` wrappers).
+-   **Effect**: This hints the browser to promote these elements to their own GPU layer in advance.
+-   **Files Affected**:
+    -   `Header.tsx` (Menu items)
+    -   `Projects.tsx` (Project cards)
+    -   `Skills.tsx` (Skill cards)
+    -   `Experience.tsx` (Experience items)
+
+## Outcome
+-   This proactive layering helps Safari handle 3D transforms and opacity changes more smoothly, reducing the "jank" feeling during animations.
