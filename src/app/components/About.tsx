@@ -3,7 +3,7 @@ import { useInView } from "motion/react";
 import { useRef } from "react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import aboutProfile from "@/assets/about-profile.jpg";
-import aboutShape from "@/assets/about-shape-blur-clean.png";
+import aboutShape from "@/assets/about-shape.png";
 
 export function About() {
   const ref = useRef(null);
