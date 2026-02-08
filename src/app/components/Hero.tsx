@@ -18,11 +18,11 @@ export function Hero() {
         />
 
         {/* Spline 3D Overlay */}
-        <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
           <iframe
             src="https://my.spline.design/windherocopycopy-We1TDC33TeyyCCQacppt5kgO-JL9/"
             style={{ border: "none", background: "transparent" }}
-            className="absolute top-0 left-1/2 -translate-x-1/2 w-[170vh] h-full md:w-full md:h-full md:static md:translate-x-0 pointer-events-auto"
+            className="w-full h-full scale-75 md:scale-100 pointer-events-auto"
             title="Spline 3D Design"
             allow="transparency"
           />
