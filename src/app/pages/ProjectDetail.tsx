@@ -109,9 +109,9 @@ export function ProjectDetail() {
                                 <div className="space-y-1">
                                     <div className="flex items-center gap-2 text-black/50 text-xs uppercase tracking-wider">
                                         <Briefcase className="w-3 h-3 text-black/40" />
-                                        <span>Role</span>
+                                        <span>Category (EN)</span>
                                     </div>
-                                    <p className="font-medium text-sm lg:text-base">{project.role || "Designer"}</p>
+                                    <p className="font-medium text-sm lg:text-base">{project.category}</p>
                                 </div>
                                 <div className="space-y-1">
                                     <div className="flex items-center gap-2 text-black/50 text-xs uppercase tracking-wider">

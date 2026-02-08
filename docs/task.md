@@ -166,3 +166,10 @@
 - [x] Apply subtle scale + soft highlight hover style <!-- id: 89 -->
 - [x] Verify hover behavior on desktop <!-- id: 90 -->
 
+# Task: Project Detail Label Update
+- [x] Change Role label to "Category (EN)" <!-- id: 91 -->
+- [x] Display project category in detail view <!-- id: 92 -->
+
+# Task: Lock Screen Slider Wheel Attempt
+- [x] Add wheel interaction to change slides (Reverted) <!-- id: 93 -->
+- [x] Revert to thumbnail click only due to page scroll interference <!-- id: 94 -->

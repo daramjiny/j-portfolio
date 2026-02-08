@@ -87,3 +87,28 @@ Removed experimental prism cursor effects and replaced with a cleaner hover trea
 ## Files Affected
 -   `src/app/components/About.tsx`
 -   `src/styles/theme.css`
+
+# Lock Screen Slider Wheel Attempt (Reverted)
+
+## Summary
+Tried adding mouse wheel slide switching for the lock screen slider, but it caused unwanted page scroll behavior. Reverted back to thumbnail-click only.
+
+## Attempted Approaches
+-   Wheel capture on the screen area
+-   `preventDefault` + `overscroll-behavior: contain`
+-   Window-level wheel lock while hovering the device frame
+
+## Final State
+-   Wheel interaction removed
+-   Thumbnail click remains as the only navigation
+
+## File
+-   `src/app/components/LockScreenSlider.tsx`
+
+# Project Detail Label Update
+
+## Summary
+Changed the label in the project detail page from "Role" to "Category (EN)" and display the project category instead of role.
+
+## File
+-   `src/app/pages/ProjectDetail.tsx`

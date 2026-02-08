@@ -37,7 +37,7 @@ export function Hero() {
             <hana-viewer
               url="https://prod.spline.design/2MIRstLBWZ2On3gz-CmQ/scene.hanacode"
               className="w-full h-full"
-            />
+            /> 
           </div>
         </div>
 
