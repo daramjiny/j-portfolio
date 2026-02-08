@@ -54,12 +54,16 @@ export function About() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="relative"
           >
-            <div className="aspect-square rounded-3xl overflow-hidden relative z-10">
+            <div className="group aspect-square rounded-3xl overflow-hidden relative z-10">
               <ImageWithFallback
                 src={aboutProfile}
                 alt="Web Designer Gyeongjin"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
               />
+              <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.45),transparent_45%)]" />
+                <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.12),transparent_60%)]" />
+              </div>
             </div>
 
           </motion.div>
