@@ -55,3 +55,35 @@ To address perceived stuttering on Safari (caused by strict power management and
 
 ## Outcome
 -   This proactive layering helps Safari handle 3D transforms and opacity changes more smoothly, reducing the "jank" feeling during animations.
+
+# 3D Hero Viewer Update & Mobile Tuning
+
+## Summary
+Switched the hero 3D embed from `iframe` to Spline Hana Viewer, and adjusted mobile sizing/visibility.
+
+## Key Changes
+1.  **Hana Viewer Integration**:
+    -   Loaded `hana-viewer` via script injection in `Hero.tsx`.
+    -   Replaced `iframe` with `<hana-viewer>` element.
+2.  **Mobile Scale Tweaks**:
+    -   Adjusted mobile scale to prevent cropping and improve visibility.
+3.  **Visual Framing Attempts**:
+    -   Tested vignette/gradient overlays to reduce branding distraction.
+    -   Kept changes subtle to avoid obvious masking.
+
+## Final State
+-   **File**: `src/app/components/Hero.tsx`
+-   **Embed**: Hana viewer element + responsive scale wrapper
+
+# About Image Hover Refinement
+
+## Summary
+Removed experimental prism cursor effects and replaced with a cleaner hover treatment on the About image.
+
+## Final Hover Effect
+-   Slight image scale-up on hover
+-   Soft highlight overlay (subtle radial + linear light)
+
+## Files Affected
+-   `src/app/components/About.tsx`
+-   `src/styles/theme.css`

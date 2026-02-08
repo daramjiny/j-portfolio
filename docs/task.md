@@ -156,4 +156,13 @@
 - [x] Implement Wrapper Strategy for Experience.tsx <!-- id: 83 -->
 - [x] Verify Stability and Performance <!-- id: 84 -->
 
+# Task: Update Hero 3D Embed
+- [x] Replace iframe with Hana Viewer embed <!-- id: 85 -->
+- [x] Adjust mobile scale for Hana Viewer <!-- id: 86 -->
+- [x] Verify hero rendering on mobile and desktop <!-- id: 87 -->
+
+# Task: Refine About Image Hover
+- [x] Remove experimental prism cursor effect <!-- id: 88 -->
+- [x] Apply subtle scale + soft highlight hover style <!-- id: 89 -->
+- [x] Verify hover behavior on desktop <!-- id: 90 -->
 
