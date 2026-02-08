@@ -112,3 +112,22 @@ Changed the label in the project detail page from "Role" to "Category (EN)" and 
 
 ## File
 -   `src/app/pages/ProjectDetail.tsx`
+
+# Local Dev Server Checklist
+
+## Steps
+1.  Move to project folder
+    -   `cd /Users/jiny/.gemini/antigravity/scratch/j-portfolio`
+2.  Start server
+    -   `npm run dev`
+3.  Confirm Vite ready message
+    -   `Local: http://localhost:5173/j-portfolio/`
+4.  Open in browser
+    -   `http://localhost:5173/j-portfolio/`
+    -   `http://127.0.0.1:5173/j-portfolio/` (if needed)
+5.  Stop server
+    -   `Ctrl + C`
+6.  Force stop (if stuck)
+    -   `lsof -i :5173`
+    -   `kill <PID>`
+    -   `kill -9 <PID>` (if needed)

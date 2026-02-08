@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import screen1 from "@/assets/ad_real_screen_1.jpg";
 import screen2 from "@/assets/ad_real_screen_2.jpg";
@@ -28,10 +28,45 @@ const slides = [
 export function LockScreenSlider() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [direction, setDirection] = useState(0);
+    const isAnimating = useRef(false);
+
+    const paginate = (newDirection: number) => {
+        if (isAnimating.current) return;
+
+        const nextIndex = currentIndex + newDirection;
+        if (nextIndex >= 0 && nextIndex < slides.length) {
+            setDirection(newDirection);
+            setCurrentIndex(nextIndex);
+            isAnimating.current = true;
+            setTimeout(() => isAnimating.current = false, 500); // Cooldown
+        }
+    };
 
     const handleThumbnailClick = (index: number) => {
+        if (index === currentIndex) return;
         setDirection(index > currentIndex ? 1 : -1);
         setCurrentIndex(index);
+    };
+
+    const handleWheel = (e: React.WheelEvent) => {
+        if (Math.abs(e.deltaY) > 20) {
+            if (e.deltaY > 0) {
+                paginate(1);
+            } else {
+                paginate(-1);
+            }
+        }
+    };
+
+    const handleDragEnd = (e: any, { offset, velocity }: any) => {
+        const swipe = offset.y;
+        const swipeConfidenceThreshold = 100;
+
+        if (swipe < -swipeConfidenceThreshold) {
+            paginate(1); // Swipe Up -> Next
+        } else if (swipe > swipeConfidenceThreshold) {
+            paginate(-1); // Swipe Down -> Prev
+        }
     };
 
     const variants = {
@@ -55,7 +90,10 @@ export function LockScreenSlider() {
     };
 
     return (
-        <div className="w-full h-full min-h-[600px] flex flex-col items-center justify-center p-6 relative overflow-hidden">
+        <div
+            className="w-full h-full min-h-[600px] flex flex-col items-center justify-center p-6 relative overflow-hidden"
+            onWheel={handleWheel}
+        >
             {/* Phone Frame */}
             <div className="relative w-[320px] h-[640px] bg-black rounded-[50px] border-[8px] border-black shadow-2xl overflow-hidden z-20">
                 {/* Dynamic Island / Notch */}
@@ -71,16 +109,20 @@ export function LockScreenSlider() {
                             initial="enter"
                             animate="center"
                             exit="exit"
+                            drag="y"
+                            dragConstraints={{ top: 0, bottom: 0 }}
+                            dragElastic={0.2}
+                            onDragEnd={handleDragEnd}
                             transition={{
                                 y: { type: "spring", stiffness: 300, damping: 30 },
                                 opacity: { duration: 0.2 }
                             }}
-                            className="absolute inset-0 w-full h-full"
+                            className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing"
                         >
                             <img
                                 src={slides[currentIndex].image}
                                 alt="App Screen"
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-cover pointer-events-none"
                             />
                         </motion.div>
                     </AnimatePresence>
