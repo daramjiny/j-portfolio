@@ -58,7 +58,7 @@ export function ProjectDetail() {
                         }`}
                 >
                     {project.id === "himart-mobile" ? (
-                        <div className="relative lg:sticky top-0 h-[80vh] lg:h-screen flex items-center justify-center overflow-hidden">
+                        <div className="relative w-full py-12 flex items-center justify-center overflow-hidden h-auto lg:h-screen lg:sticky lg:top-0">
                             <LockScreenSlider />
                         </div>
                     ) : (
