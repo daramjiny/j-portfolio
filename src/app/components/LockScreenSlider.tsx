@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import screen1 from "@/assets/ad_real_screen_1.jpg";
 import screen2 from "@/assets/ad_real_screen_2.jpg";
@@ -29,6 +29,7 @@ export function LockScreenSlider() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [direction, setDirection] = useState(0);
     const isAnimating = useRef(false);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     const paginate = (newDirection: number) => {
         if (isAnimating.current) return;
@@ -48,7 +49,8 @@ export function LockScreenSlider() {
         setCurrentIndex(index);
     };
 
-    const handleWheel = (e: React.WheelEvent) => {
+    const handleWheel = (e: WheelEvent) => {
+        e.preventDefault(); // Stop page scroll
         if (Math.abs(e.deltaY) > 20) {
             if (e.deltaY > 0) {
                 paginate(1);
@@ -57,6 +59,25 @@ export function LockScreenSlider() {
             }
         }
     };
+
+    const handleTouchMove = (e: TouchEvent) => {
+        e.preventDefault(); // Stop page scroll on touch drag
+    };
+
+    useEffect(() => {
+        const container = containerRef.current;
+        if (container) {
+            // Add non-passive listeners to block scroll
+            container.addEventListener('wheel', handleWheel, { passive: false });
+            container.addEventListener('touchmove', handleTouchMove, { passive: false });
+        }
+        return () => {
+            if (container) {
+                container.removeEventListener('wheel', handleWheel);
+                container.removeEventListener('touchmove', handleTouchMove);
+            }
+        };
+    }, [currentIndex]); // Re-bind if needed, but mainly focused on mounting
 
     const handleDragEnd = (e: any, { offset, velocity }: any) => {
         const swipe = offset.y;
@@ -91,8 +112,8 @@ export function LockScreenSlider() {
 
     return (
         <div
-            className="w-full h-full min-h-[600px] flex flex-col items-center justify-center p-6 relative overflow-hidden"
-            onWheel={handleWheel}
+            ref={containerRef}
+            className="w-full h-full min-h-[600px] flex flex-col items-center justify-center p-6 relative overflow-hidden touch-none"
         >
             {/* Phone Frame */}
             <div className="relative w-[320px] h-[640px] bg-black rounded-[50px] border-[8px] border-black shadow-2xl overflow-hidden z-20">
