@@ -123,7 +123,7 @@ export function LockScreenSlider() {
                 <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-black rounded-b-2xl z-50"></div>
 
                 {/* Screen Content */}
-                <div className="relative w-full h-full bg-black">
+                <div className="relative w-full h-full bg-transparent">
                     <AnimatePresence initial={false} custom={direction}>
                         <motion.div
                             key={currentIndex}
@@ -158,9 +158,9 @@ export function LockScreenSlider() {
                     <button
                         key={`dot-${slide.id}`}
                         onClick={() => handleThumbnailClick(index)}
-                        className={`w-3 h-3 rounded-full transition-all duration-300 ${currentIndex === index
-                            ? "bg-black scale-125"
-                            : "bg-black/20 hover:bg-black/40"
+                        className={`h-3 rounded-full transition-all duration-300 ${currentIndex === index
+                                ? "w-8 bg-black"
+                                : "w-3 bg-black/20 hover:bg-black/40"
                             }`}
                         aria-label={`Go to slide ${index + 1}`}
                     />
