@@ -158,9 +158,9 @@ export function LockScreenSlider() {
                     <button
                         key={`dot-${slide.id}`}
                         onClick={() => handleThumbnailClick(index)}
-                        className={`h-3 rounded-full transition-all duration-300 ${currentIndex === index
-                                ? "w-8 bg-black"
-                                : "w-3 bg-black/20 hover:bg-black/40"
+                        className={`w-3 rounded-full transition-all duration-300 ${currentIndex === index
+                                ? "h-8 bg-black"
+                                : "h-3 bg-black/20 hover:bg-black/40"
                             }`}
                         aria-label={`Go to slide ${index + 1}`}
                     />
