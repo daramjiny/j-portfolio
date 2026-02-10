@@ -112,11 +112,13 @@ export function LockScreenSlider() {
 
     return (
         <div
-            ref={containerRef}
             className="w-full h-full min-h-[600px] flex flex-col items-center justify-center p-6 relative overflow-hidden touch-none"
         >
             {/* Phone Frame */}
-            <div className="relative w-[320px] h-[640px] bg-black rounded-[50px] border-[8px] border-black shadow-2xl overflow-hidden z-20 transition-transform duration-300">
+            <div
+                ref={containerRef}
+                className="relative w-[320px] h-[640px] bg-black rounded-[50px] border-[8px] border-black shadow-2xl overflow-hidden z-20 transition-transform duration-300"
+            >
                 {/* Dynamic Island / Notch */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-black rounded-b-2xl z-50"></div>
 
