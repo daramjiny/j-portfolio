@@ -1,6 +1,6 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
-import { ArrowLeft, ExternalLink, Github, Calendar, User, Briefcase } from "lucide-react";
+import { ArrowLeft, ArrowUp, ExternalLink, Github, Calendar, User, Briefcase } from "lucide-react";
 import { projects } from "@/data/projects";
 import { useEffect } from "react";
 import { Footer } from "@/app/components/Footer";
@@ -38,11 +38,19 @@ export function ProjectDetail() {
             exit={{ opacity: 0 }}
             className="bg-white"
         >
-            {/* Navigation - Fixed */}
-            <nav className="fixed top-6 left-6 z-50">
+            {/* Navigation - Fixed Bottom Right */}
+            <nav className="fixed bottom-6 right-6 z-50 flex gap-3">
+                <button
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className="inline-flex p-3 bg-white/80 backdrop-blur-md rounded-full border border-black/5 hover:bg-white hover:scale-105 transition-all shadow-sm text-black group"
+                    aria-label="Scroll to top"
+                >
+                    <ArrowUp className="w-6 h-6 group-hover:-translate-y-0.5 transition-transform" />
+                </button>
                 <Link
                     to="/#projects"
                     className="inline-flex p-3 bg-white/80 backdrop-blur-md rounded-full border border-black/5 hover:bg-white hover:scale-105 transition-all shadow-sm text-black"
+                    aria-label="Back to projects"
                 >
                     <ArrowLeft className="w-6 h-6" />
                 </Link>
