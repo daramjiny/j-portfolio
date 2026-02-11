@@ -140,9 +140,7 @@ export function ProjectDetail() {
                                 <h3 className="text-lg font-medium">Overview</h3>
                                 <p className="text-base lg:text-lg text-black/70 leading-relaxed text-balance">
                                     {project.fullDescription || project.description}
-                                </p>
-                                <p className="text-base lg:text-lg text-black/70 leading-relaxed text-balance">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
                                 </p>
                             </motion.div>
 
@@ -169,9 +167,9 @@ export function ProjectDetail() {
                     </main>
 
                 </div>
-            </div>
+            </div >
 
             <Footer />
-        </motion.div>
+        </motion.div >
     );
 }
