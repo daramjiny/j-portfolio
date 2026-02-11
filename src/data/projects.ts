@@ -45,6 +45,7 @@ import projectOttAppThumb from '../assets/project-ottapp-thumb.jpg';
 import projectJjangyouThumb from '../assets/project-jjangyou-thumb.jpg';
 import projectModetourThumb from '../assets/project-modetour-thumb.jpg';
 import projectSiwonPakThumb from '../assets/project-siwonpak-thumb.jpg';
+import projectSiwonPakDetail from '../assets/project-siwonpak-detail.jpg';
 import projectSiwonProThumb from '../assets/project-siwonpro-thumb.jpg';
 
 export const projects: Project[] = [
@@ -302,14 +303,17 @@ export const projects: Project[] = [
         client: "Modetour",
     },
     {
-        id: "siwon-school-campaign",
-        title: "Siwon School Campaign",
-        description: "Marketing campaign banners for Siwon School.",
-        tags: ["Banner", "Education", "Marketing"],
-        year: "2023",
+        id: "siwon-landing",
+        title: "siwonschool landing page",
+        description: "시원스쿨 퍼펙트 패키지 랜딩페이지로 혜택과 리뷰를 강조하면서도 시원스쿨 브랜드 분위기와 이질적인 느낌이 들지않도록 브랜드색상 및 모델을 중간중간 배치해서 디자인했습니다.",
+        fullDescription: "시원스쿨 퍼펙트 패키지 랜딩페이지로 혜택과 리뷰를 강조하면서도 시원스쿨 브랜드 분위기와 이질적인 느낌이 들지않도록 브랜드색상 및 모델을 중간중간 배치해서 디자인했습니다.",
+        tags: ["Landing Page", "Education", "Marketing"],
+        year: "2016",
         category: "PAGE",
         image: projectSiwonPakThumb,
-        client: "Siwon School",
+        detailImage: projectSiwonPakDetail,
+        client: "siwonschool",
+        role: "Web Designer",
     },
     {
         id: "siwon-school-pro",
