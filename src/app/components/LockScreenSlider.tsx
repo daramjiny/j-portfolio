@@ -114,13 +114,13 @@ export function LockScreenSlider() {
         <div
             className="w-full h-full min-h-[600px] flex flex-row md:flex-col items-center justify-center p-6 relative overflow-hidden touch-none"
         >
-            {/* Phone/Image Frame - Silver Border */}
+            {/* Phone/Image Frame */}
             <div
                 ref={containerRef}
-                className="relative w-[260px] h-[520px] md:w-[320px] md:h-[640px] rounded-2xl md:bg-zinc-300 md:rounded-[50px] md:border-[8px] md:border-zinc-300 shadow-2xl overflow-hidden z-20 transition-all duration-300"
+                className="relative w-[260px] h-[520px] md:w-[320px] md:h-[680px] rounded-2xl md:bg-black md:rounded-[55px] md:border-[8px] md:border-black shadow-2xl overflow-hidden z-20 transition-all duration-300"
             >
                 {/* Dynamic Island / Notch - Desktop Only */}
-                <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-black rounded-b-2xl z-50"></div>
+                <div className="hidden md:block absolute top-3 left-1/2 -translate-x-1/2 w-[100px] h-[28px] bg-black rounded-full z-50 pointer-events-none"></div>
 
                 {/* Screen Content */}
                 <div className="relative w-full h-full bg-transparent">
@@ -167,8 +167,8 @@ export function LockScreenSlider() {
                 ))}
             </div>
 
-            {/* Desktop Navigation - Bottom Thumbnails (Clean List) */}
-            <div className="hidden md:flex mt-8 z-20 gap-4">
+            {/* Desktop Navigation - Bottom Thumbnails */}
+            <div className="hidden md:flex mt-8 z-20 gap-4 p-4 bg-white/40 backdrop-blur-xl rounded-3xl border border-white/50 shadow-lg">
                 {slides.map((slide, index) => (
                     <button
                         key={`thumb-${slide.id}`}

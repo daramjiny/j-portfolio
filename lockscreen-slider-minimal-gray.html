@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lock Screen Slider Minimal Gray</title>
+    <style>
+      :root {
+        --bg: #eceef1;
+        --panel: #f7f8fa;
+        --frame: #d7dbe0;
+        --ink: #1f2328;
+        --sub: #616874;
+        --line: #c8ced6;
+        --dot: #9ea6b2;
+        --dot-active: #2f353d;
+      }
+
+      * { box-sizing: border-box; }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+        background: radial-gradient(1200px 500px at 50% -20%, #ffffff 0%, transparent 60%), var(--bg);
+        color: var(--ink);
+      }
+
+      .wrap {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .layout {
+        width: min(980px, 100%);
+        display: grid;
+        grid-template-columns: 1fr minmax(280px, 360px);
+        gap: 36px;
+        align-items: center;
+      }
+
+      .title {
+        max-width: 36ch;
+      }
+
+      .title p {
+        margin: 0 0 8px;
+        color: var(--sub);
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .title h1 {
+        margin: 0 0 12px;
+        font-size: clamp(28px, 4vw, 46px);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+      }
+
+      .title .desc {
+        margin: 0;
+        color: #4e5662;
+        line-height: 1.7;
+      }
+
+      .phone {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 9 / 19.5;
+        border-radius: 42px;
+        padding: 12px;
+        background: linear-gradient(160deg, #fefefe, #e2e6eb);
+        border: 1px solid var(--frame);
+        box-shadow: 0 20px 46px rgba(17, 22, 29, 0.16);
+      }
+
+      .phone::before {
+        content: "";
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 34%;
+        height: 30px;
+        border-radius: 999px;
+        background: #11151a;
+        z-index: 3;
+      }
+
+      .screen {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: 32px;
+        overflow: hidden;
+        background: #ccd2d9;
+        touch-action: pan-y;
+      }
+
+      .slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 420ms ease;
+      }
+
+      .slide.active {
+        opacity: 1;
+      }
+
+      .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(22%);
+      }
+
+      .overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(24, 28, 33, 0.45), rgba(24, 28, 33, 0.08) 42%, rgba(24, 28, 33, 0.16));
+      }
+
+      .meta {
+        position: absolute;
+        left: 18px;
+        right: 18px;
+        bottom: 22px;
+        z-index: 2;
+        color: #eef1f4;
+      }
+
+      .clock {
+        margin: 0;
+        font-size: 52px;
+        letter-spacing: -0.02em;
+        line-height: 0.95;
+        font-weight: 500;
+      }
+
+      .date {
+        margin: 6px 0 0;
+        font-size: 14px;
+        opacity: 0.9;
+      }
+
+      .controls {
+        margin-top: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .btn {
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        color: var(--ink);
+        border-radius: 999px;
+        cursor: pointer;
+      }
+
+      .dots {
+        display: flex;
+        gap: 6px;
+      }
+
+      .dot {
+        width: 22px;
+        height: 4px;
+        border-radius: 999px;
+        background: var(--dot);
+        opacity: 0.45;
+      }
+
+      .dot.active {
+        background: var(--dot-active);
+        opacity: 1;
+      }
+
+      @media (max-width: 920px) {
+        .layout {
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+
+        .title {
+          text-align: center;
+          margin-bottom: 6px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="layout">
+        <article class="title">
+          <p>Minimal Concept</p>
+          <h1>심플한 그레이 톤 잠금화면 슬라이드</h1>
+          <p class="desc">불필요한 장식을 줄이고, 이미지 전환과 정보 가독성에 집중한 깔끔한 스타일입니다.</p>
+        </article>
+
+        <article>
+          <div class="phone">
+            <div class="screen" id="screen" aria-label="잠금화면 슬라이더" role="region">
+              <figure class="slide active"><img src="./src/assets/ad_real_screen_1.jpg" alt="잠금화면 1" draggable="false" /></figure>
+              <figure class="slide"><img src="./src/assets/ad_real_screen_2.jpg" alt="잠금화면 2" draggable="false" /></figure>
+              <figure class="slide"><img src="./src/assets/ad_real_screen_3.jpg" alt="잠금화면 3" draggable="false" /></figure>
+
+              <div class="overlay"></div>
+              <div class="meta">
+                <p class="clock" id="clock">09:41</p>
+                <p class="date" id="date">2월 11일 수요일</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="controls">
+            <button class="btn" id="prev" aria-label="이전">◀</button>
+            <div class="dots" id="dots"></div>
+            <button class="btn" id="next" aria-label="다음">▶</button>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script>
+      const slides = [...document.querySelectorAll('.slide')];
+      const dotsWrap = document.getElementById('dots');
+      const prev = document.getElementById('prev');
+      const next = document.getElementById('next');
+      const screen = document.getElementById('screen');
+      const clock = document.getElementById('clock');
+      const date = document.getElementById('date');
+
+      let idx = 0;
+      let timer;
+      let startX = 0;
+      let delta = 0;
+      let dragging = false;
+
+      const dots = slides.map((_, i) => {
+        const d = document.createElement('span');
+        d.className = `dot ${i === 0 ? 'active' : ''}`;
+        dotsWrap.appendChild(d);
+        return d;
+      });
+
+      function pad(n) { return String(n).padStart(2, '0'); }
+
+      function setTime() {
+        const now = new Date();
+        const days = ['일', '월', '화', '수', '목', '금', '토'];
+        clock.textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+        date.textContent = `${now.getMonth() + 1}월 ${now.getDate()}일 ${days[now.getDay()]}요일`;
+      }
+
+      function show(nextIdx) {
+        idx = (nextIdx + slides.length) % slides.length;
+        slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }
+
+      function move(step) {
+        show(idx + step);
+        restart();
+      }
+
+      function restart() {
+        clearInterval(timer);
+        timer = setInterval(() => show(idx + 1), 3800);
+      }
+
+      prev.addEventListener('click', () => move(-1));
+      next.addEventListener('click', () => move(1));
+
+      screen.addEventListener('pointerdown', (e) => {
+        dragging = true;
+        startX = e.clientX;
+        delta = 0;
+      });
+
+      screen.addEventListener('pointermove', (e) => {
+        if (!dragging) return;
+        delta = e.clientX - startX;
+      });
+
+      window.addEventListener('pointerup', () => {
+        if (!dragging) return;
+        dragging = false;
+        if (delta > 45) move(-1);
+        if (delta < -45) move(1);
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') move(-1);
+        if (e.key === 'ArrowRight') move(1);
+      });
+
+      setTime();
+      setInterval(setTime, 1000);
+      restart();
+    </script>
+  </body>
+</html>
