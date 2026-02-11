@@ -112,13 +112,13 @@ export const projects: Project[] = [
     // New Projects Added
     {
         id: "himart-mobile",
-        title: "Hi-Mart Mobile App",
-        description: "Mobile application interface design for electronics retailer.",
-        tags: ["Mobile", "Commerce", "App Design"],
-        year: "2024",
+        title: "Himart Mobile Fullscreen AD",
+        description: "하이마트 내 프로모션 상품을 캐시슬라이드, 쿠차슬라이드, 허니스크린 등 풀스크린 모바일 광고로 진행하여 일정 기간동안 라이브시킬 탬플릿을 주기적으로 디자인했습니다. 제한적인 가이드와 공간안에서 최대한 이벤트 내용을 한눈에 들어오도록하여 높은 클릭율을 목표로 작업했습니다.",
+        tags: ["MO/PC Banner", "Fullscreen AD", "Mobile"],
+        year: "2018",
         category: "BANNER",
         image: projectHimartMoThumb,
-        client: "Lotte Hi-Mart",
+        client: "Himart",
     },
     {
         id: "ssg-mall-renewal",

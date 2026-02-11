@@ -119,7 +119,7 @@ export function LockScreenSlider() {
                 ref={containerRef}
                 className="relative w-[260px] h-[520px] md:w-[320px] md:h-[680px] rounded-2xl md:bg-black md:rounded-[55px] md:border-[8px] md:border-black shadow-2xl overflow-hidden z-20 transition-all duration-300"
             >
-                {/* Dynamic Island / Notch - Desktop Only */}
+                {/* Dynamic Island / Notch -(알약 모양 카메라) Desktop Only */}
                 <div className="hidden md:block absolute top-3 left-1/2 -translate-x-1/2 w-[100px] h-[28px] bg-black rounded-full z-50 pointer-events-none"></div>
 
                 {/* Screen Content */}
