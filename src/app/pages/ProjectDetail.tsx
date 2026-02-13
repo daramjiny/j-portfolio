@@ -47,7 +47,7 @@ export function ProjectDetail() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
-                    className={`relative w-full min-h-[40vh] order-1 lg:order-1 bg-white ${project.category === "PAGE" ? "p-8 lg:p-20 flex items-start justify-center" : ""}`}
+                    className={`relative w-full min-h-[40vh] order-1 lg:order-1 bg-white ${project.category === "PAGE" ? "p-8 lg:p-20 block" : ""}`}
                 >
                     {project.id === "himart-mobile" ? (
                         <div className="relative w-full py-12 flex items-center justify-center overflow-hidden h-auto lg:h-screen lg:sticky lg:top-0">
@@ -69,7 +69,7 @@ export function ProjectDetail() {
                                 }
                             }}
                             style={{ maxWidth: project.category === "PAGE" ? imageMaxWidth : '100%' }}
-                            className={`h-auto block ${project.category === "PAGE" ? "w-full shadow-[0_4px_30px_rgba(0,0,0,0.08)]" : "w-full"}`}
+                            className={`h-auto block mx-auto ${project.category === "PAGE" ? "w-full shadow-[0_4px_30px_rgba(0,0,0,0.08)]" : "w-full"}`}
                         />
                     )}
                 </motion.div>
