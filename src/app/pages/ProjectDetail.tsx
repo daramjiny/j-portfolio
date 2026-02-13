@@ -40,15 +40,8 @@ export function ProjectDetail() {
             exit={{ opacity: 0 }}
             className="bg-white"
         >
-            {/* Navigation - Fixed Bottom Right */}
-            <nav className="fixed bottom-6 right-6 z-50 flex gap-3">
-                <button
-                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className="inline-flex p-3 bg-white/80 backdrop-blur-md rounded-full border border-black/5 hover:bg-white hover:scale-105 transition-all shadow-sm text-black group"
-                    aria-label="Scroll to top"
-                >
-                    <ArrowUp className="w-6 h-6 group-hover:-translate-y-0.5 transition-transform" />
-                </button>
+            {/* Navigation - Fixed Top Right */}
+            <nav className="fixed top-6 right-6 z-50 flex gap-3">
                 <Link
                     to="/#projects"
                     className="inline-flex p-3 bg-white/80 backdrop-blur-md rounded-full border border-black/5 hover:bg-white hover:scale-105 transition-all shadow-sm text-black"
@@ -56,6 +49,13 @@ export function ProjectDetail() {
                 >
                     <ArrowLeft className="w-6 h-6" />
                 </Link>
+                <button
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className="inline-flex p-3 bg-white/80 backdrop-blur-md rounded-full border border-black/5 hover:bg-white hover:scale-105 transition-all shadow-sm text-black group"
+                    aria-label="Scroll to top"
+                >
+                    <ArrowUp className="w-6 h-6 group-hover:-translate-y-0.5 transition-transform" />
+                </button>
             </nav>
 
             <div className="lg:grid lg:grid-cols-2 min-h-screen">
