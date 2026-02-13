@@ -40,23 +40,6 @@ export function ProjectDetail() {
             exit={{ opacity: 0 }}
             className="bg-white"
         >
-            {/* Navigation - Hidden on Mobile, Fixed Bottom Right on Desktop */}
-            <nav className="hidden lg:flex fixed lg:bottom-6 lg:top-auto lg:right-6 z-50 gap-3">
-                <Link
-                    to="/#projects"
-                    className="inline-flex p-2 bg-white/80 backdrop-blur-md rounded-full border border-black/5 hover:bg-white hover:scale-105 transition-all shadow-sm text-black/40 hover:text-black"
-                    aria-label="Back to projects"
-                >
-                    <ArrowLeft className="w-4 h-4" />
-                </Link>
-                <button
-                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className="inline-flex p-2 bg-white/80 backdrop-blur-md rounded-full border border-black/5 hover:bg-white hover:scale-105 transition-all shadow-sm text-black/40 hover:text-black group"
-                    aria-label="Scroll to top"
-                >
-                    <ArrowUp className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
-                </button>
-            </nav>
 
             <div className="lg:grid lg:grid-cols-2 min-h-screen">
                 {/* Visual Column (Left) - Scrolls naturally with full height */}
@@ -93,7 +76,24 @@ export function ProjectDetail() {
                 </motion.div>
 
                 {/* Content Column (Right) - Sticky Sidebar */}
-                <div className="order-2 lg:order-2 flex flex-col lg:sticky lg:top-0 lg:self-start h-full">
+                <div className="order-2 lg:order-2 flex flex-col lg:sticky lg:top-0 lg:self-start h-full lg:h-screen relative">
+                    {/* Navigation - Hidden on Mobile, Absolute Bottom Right in Sticky Column */}
+                    <nav className="hidden lg:flex absolute bottom-6 right-6 lg:right-16 z-50 gap-3">
+                        <Link
+                            to="/#projects"
+                            className="inline-flex p-2 bg-white/80 backdrop-blur-md rounded-full border border-black/5 hover:bg-white hover:scale-105 transition-all shadow-sm text-black/40 hover:text-black"
+                            aria-label="Back to projects"
+                        >
+                            <ArrowLeft className="w-4 h-4" />
+                        </Link>
+                        <button
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                            className="inline-flex p-2 bg-white/80 backdrop-blur-md rounded-full border border-black/5 hover:bg-white hover:scale-105 transition-all shadow-sm text-black/40 hover:text-black group"
+                            aria-label="Scroll to top"
+                        >
+                            <ArrowUp className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
+                        </button>
+                    </nav>
                     <main className="flex-1 px-6 py-12 lg:px-16 lg:py-24 max-w-2xl mx-auto w-full">
                         <div className="space-y-16">
                             {/* Header */}
