@@ -41,41 +41,43 @@ export function ProjectDetail() {
             className="bg-white"
         >
 
-            <div className="lg:grid lg:grid-cols-2 min-h-screen">
+            <div className="lg:flex lg:items-start">
                 {/* Visual Column (Left) - Scrolls naturally with full height */}
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
-                    className={`relative h-auto min-h-[40vh] lg:min-h-screen order-1 lg:order-1 bg-white ${project.category === "PAGE" ? "p-8 lg:p-20 flex items-center justify-center" : ""}`}
+                    className={`relative w-full lg:w-[55%] min-h-[40vh] order-1 lg:order-1 bg-white ${project.category === "PAGE" ? "p-8 lg:p-20 block" : ""}`}
                 >
                     {project.id === "himart-mobile" ? (
                         <div className="relative w-full py-12 flex items-center justify-center overflow-hidden h-auto lg:h-screen lg:sticky lg:top-0">
                             <LockScreenSlider />
                         </div>
                     ) : (
-                        <img
-                            src={project.detailImage || project.image}
-                            alt={project.title}
-                            onLoad={(e) => {
-                                const img = e.target as HTMLImageElement;
-                                if (project.category === "PAGE") {
-                                    // If maxWidth is manually set, use it. Otherwise, use naturalWidth / 2 for Retina scaling.
-                                    if (project.maxWidth) {
-                                        setImageMaxWidth(`${project.maxWidth}px`);
-                                    } else {
-                                        setImageMaxWidth(`${img.naturalWidth / 2}px`);
+                        <div className="w-full">
+                            <img
+                                src={project.detailImage || project.image}
+                                alt={project.title}
+                                onLoad={(e) => {
+                                    const img = e.target as HTMLImageElement;
+                                    if (project.category === "PAGE") {
+                                        // If maxWidth is manually set, use it. Otherwise, use naturalWidth / 2 for Retina scaling.
+                                        if (project.maxWidth) {
+                                            setImageMaxWidth(`${project.maxWidth}px`);
+                                        } else {
+                                            setImageMaxWidth(`${img.naturalWidth / 2}px`);
+                                        }
                                     }
-                                }
-                            }}
-                            style={{ maxWidth: project.category === "PAGE" ? imageMaxWidth : '100%' }}
-                            className={`h-auto block ${project.category === "PAGE" ? "w-full shadow-[0_4px_30px_rgba(0,0,0,0.08)]" : "w-full"}`}
-                        />
+                                }}
+                                style={{ maxWidth: project.category === "PAGE" ? imageMaxWidth : '100%' }}
+                                className={`h-auto block mx-auto ${project.category === "PAGE" ? "w-full shadow-[0_4px_30px_rgba(0,0,0,0.08)]" : "w-full"}`}
+                            />
+                        </div>
                     )}
                 </motion.div>
 
                 {/* Content Column (Right) - Sticky Sidebar */}
-                <div className="order-2 lg:order-2 flex flex-col lg:sticky lg:top-0 lg:self-start h-full lg:h-screen relative">
+                <div className="order-2 lg:order-2 w-full lg:w-[45%] flex flex-col relative">
                     {/* Navigation - Hidden on Mobile, Absolute Bottom Right in Sticky Column */}
                     <nav className="hidden lg:flex absolute bottom-6 right-6 lg:right-16 z-50 gap-3">
                         <Link
@@ -118,28 +120,28 @@ export function ProjectDetail() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.1 }}
-                                className="grid grid-cols-1 sm:grid-cols-3 gap-8 py-8 border-y border-black/5"
+                                className="grid grid-cols-3 gap-3 sm:gap-8 py-5 sm:py-8 border-y border-black/5"
                             >
-                                <div className="space-y-1">
-                                    <div className="flex items-center gap-2 text-black/50 text-xs uppercase tracking-wider">
-                                        <User className="w-3 h-3 text-black/40" />
+                                <div className="space-y-1 text-center sm:text-left pr-2 sm:pr-0 border-r border-black/10 sm:border-r-0">
+                                    <div className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2 text-black/50 text-xs uppercase tracking-wider">
+                                        <User className="w-3 h-3 text-black/40 shrink-0" />
                                         <span>Client</span>
                                     </div>
-                                    <p className="font-medium text-sm lg:text-base">{project.client || "Personal Project"}</p>
+                                    <p className="font-medium text-sm lg:text-base leading-tight break-keep">{project.client || "Personal Project"}</p>
                                 </div>
-                                <div className="space-y-1">
-                                    <div className="flex items-center gap-2 text-black/50 text-xs uppercase tracking-wider">
-                                        <Briefcase className="w-3 h-3 text-black/40" />
+                                <div className="space-y-1 text-center sm:text-left px-2 sm:px-0 border-r border-black/10 sm:border-r-0">
+                                    <div className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2 text-black/50 text-xs uppercase tracking-wider">
+                                        <Briefcase className="w-3 h-3 text-black/40 shrink-0" />
                                         <span>Category</span>
                                     </div>
-                                    <p className="font-medium text-sm lg:text-base">{project.category}</p>
+                                    <p className="font-medium text-sm lg:text-base leading-tight">{project.category}</p>
                                 </div>
-                                <div className="space-y-1">
-                                    <div className="flex items-center gap-2 text-black/50 text-xs uppercase tracking-wider">
-                                        <Calendar className="w-3 h-3 text-black/40" />
+                                <div className="space-y-1 text-center sm:text-left pl-2 sm:pl-0">
+                                    <div className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2 text-black/50 text-xs uppercase tracking-wider">
+                                        <Calendar className="w-3 h-3 text-black/40 shrink-0" />
                                         <span>Year</span>
                                     </div>
-                                    <p className="font-medium text-sm lg:text-base">{project.year}</p>
+                                    <p className="font-medium text-sm lg:text-base leading-tight">{project.year}</p>
                                 </div>
                             </motion.div>
 

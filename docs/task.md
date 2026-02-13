@@ -173,3 +173,16 @@
 # Task: Lock Screen Slider Wheel Attempt
 - [x] Add wheel interaction to change slides (Reverted) <!-- id: 93 -->
 - [x] Revert to thumbnail click only due to page scroll interference <!-- id: 94 -->
+
+# Task: Project Detail Safari Layout Fix
+- [x] Remove sticky/viewport height constraints causing overlap on Safari resize <!-- id: 95 -->
+- [x] Change desktop 2-column layout from grid to flex for stable height calculation <!-- id: 96 -->
+- [x] Verify image/content split as 55/45 on desktop <!-- id: 97 -->
+
+# Task: Project Detail Mobile Info Row Refinement
+- [x] Keep Client/Category/Year in a single row on mobile <!-- id: 98 -->
+- [x] Reduce spacing and improve alignment for mobile readability <!-- id: 99 -->
+- [x] Restore original text size while keeping improved alignment <!-- id: 100 -->
+
+# Task: Project Detail Visual Tone Adjustment
+- [x] Test gray image-column background and revert to white by final decision <!-- id: 101 -->

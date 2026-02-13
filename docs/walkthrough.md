@@ -131,3 +131,42 @@ Changed the label in the project detail page from "Role" to "Category (EN)" and 
     -   `lsof -i :5173`
     -   `kill <PID>`
     -   `kill -9 <PID>` (if needed)
+
+# Project Detail Safari Resize Fix
+
+## Summary
+Resolved a Safari-specific layout issue where the left detail image panel visually overlapped into the footer area after shrinking and expanding the browser window.
+
+## Root Cause (Observed)
+-   The desktop two-column detail layout used a `grid` structure plus sticky/viewport-height assumptions.
+-   On Safari resize, column height recalculation became inconsistent for very tall left-side images, causing visual overlap behavior near the footer boundary.
+
+## Applied Fix
+1.  Removed sticky/forced viewport-height constraints in the right detail column.
+2.  Switched desktop layout from `lg:grid lg:grid-cols-2` to `lg:flex`.
+3.  Set explicit width split:
+    -   Left image column: `lg:w-[55%]`
+    -   Right content column: `lg:w-[45%]`
+4.  Final visual decision:
+    -   Image column background reverted to white.
+
+## Result
+-   Safari window resize no longer breaks the project detail layout.
+-   Footer overlap symptom was eliminated under the reported resize scenario.
+
+## File
+-   `src/app/pages/ProjectDetail.tsx`
+
+# Project Detail Mobile Info Row Polish
+
+## Summary
+Improved the mobile layout of the info strip (`Client / Category / Year`) to avoid awkward vertical stacking and make the section feel denser and more balanced.
+
+## Applied Changes
+-   Kept all three meta items in one row on mobile (`grid-cols-3`).
+-   Reduced mobile spacing/padding in the info strip.
+-   Improved visual balance with centered alignment and subtle column separators on mobile.
+-   Restored text size to previous values after testing smaller typography.
+
+## File
+-   `src/app/pages/ProjectDetail.tsx`
