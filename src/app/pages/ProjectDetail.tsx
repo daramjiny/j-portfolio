@@ -41,38 +41,36 @@ export function ProjectDetail() {
             className="bg-white"
         >
 
-            <div className="lg:grid lg:grid-cols-2">
+            <div className="lg:grid lg:grid-cols-2 min-h-screen">
                 {/* Visual Column (Left) - Scrolls naturally with full height */}
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
-                    className={`relative w-full min-h-[40vh] order-1 lg:order-1 bg-white ${project.category === "PAGE" ? "p-8 lg:p-20 block" : ""}`}
+                    className={`relative h-auto min-h-[40vh] lg:min-h-screen order-1 lg:order-1 bg-white ${project.category === "PAGE" ? "p-8 lg:p-20 flex items-center justify-center" : ""}`}
                 >
                     {project.id === "himart-mobile" ? (
                         <div className="relative w-full py-12 flex items-center justify-center overflow-hidden h-auto lg:h-screen lg:sticky lg:top-0">
                             <LockScreenSlider />
                         </div>
                     ) : (
-                        <div className="w-full">
-                            <img
-                                src={project.detailImage || project.image}
-                                alt={project.title}
-                                onLoad={(e) => {
-                                    const img = e.target as HTMLImageElement;
-                                    if (project.category === "PAGE") {
-                                        // If maxWidth is manually set, use it. Otherwise, use naturalWidth / 2 for Retina scaling.
-                                        if (project.maxWidth) {
-                                            setImageMaxWidth(`${project.maxWidth}px`);
-                                        } else {
-                                            setImageMaxWidth(`${img.naturalWidth / 2}px`);
-                                        }
+                        <img
+                            src={project.detailImage || project.image}
+                            alt={project.title}
+                            onLoad={(e) => {
+                                const img = e.target as HTMLImageElement;
+                                if (project.category === "PAGE") {
+                                    // If maxWidth is manually set, use it. Otherwise, use naturalWidth / 2 for Retina scaling.
+                                    if (project.maxWidth) {
+                                        setImageMaxWidth(`${project.maxWidth}px`);
+                                    } else {
+                                        setImageMaxWidth(`${img.naturalWidth / 2}px`);
                                     }
-                                }}
-                                style={{ maxWidth: project.category === "PAGE" ? imageMaxWidth : '100%' }}
-                                className={`h-auto block mx-auto ${project.category === "PAGE" ? "w-full shadow-[0_4px_30px_rgba(0,0,0,0.08)]" : "w-full"}`}
-                            />
-                        </div>
+                                }
+                            }}
+                            style={{ maxWidth: project.category === "PAGE" ? imageMaxWidth : '100%' }}
+                            className={`h-auto block ${project.category === "PAGE" ? "w-full shadow-[0_4px_30px_rgba(0,0,0,0.08)]" : "w-full"}`}
+                        />
                     )}
                 </motion.div>
 
