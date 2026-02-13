@@ -41,7 +41,7 @@ export function ProjectDetail() {
             className="bg-white"
         >
 
-            <div className="lg:grid lg:grid-cols-2 min-h-screen">
+            <div className="lg:grid lg:grid-cols-2">
                 {/* Visual Column (Left) - Scrolls naturally with full height */}
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
