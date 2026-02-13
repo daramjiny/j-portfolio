@@ -47,7 +47,7 @@ export function ProjectDetail() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
-                    className={`relative h-auto min-h-[40vh] lg:min-h-screen order-1 lg:order-1 bg-white ${project.category === "PAGE" ? "p-8 lg:p-20 flex items-center justify-center" : ""}`}
+                    className={`relative h-auto min-h-[40vh] lg:min-h-screen order-1 lg:order-1 bg-white ${project.category === "PAGE" ? "p-8 lg:p-8 flex items-center justify-center" : ""}`}
                 >
                     {project.id === "himart-mobile" ? (
                         <div className="relative w-full py-12 flex items-center justify-center overflow-hidden h-auto lg:h-screen lg:sticky lg:top-0">
