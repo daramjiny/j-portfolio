@@ -44,17 +44,17 @@ export function ProjectDetail() {
             <nav className="fixed top-6 right-6 z-50 flex gap-3">
                 <Link
                     to="/#projects"
-                    className="inline-flex p-3 bg-white/80 backdrop-blur-md rounded-full border border-black/5 hover:bg-white hover:scale-105 transition-all shadow-sm text-black"
+                    className="inline-flex p-2 bg-white/80 backdrop-blur-md rounded-full border border-black/5 hover:bg-white hover:scale-105 transition-all shadow-sm text-black/40 hover:text-black"
                     aria-label="Back to projects"
                 >
-                    <ArrowLeft className="w-6 h-6" />
+                    <ArrowLeft className="w-4 h-4" />
                 </Link>
                 <button
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className="inline-flex p-3 bg-white/80 backdrop-blur-md rounded-full border border-black/5 hover:bg-white hover:scale-105 transition-all shadow-sm text-black group"
+                    className="inline-flex p-2 bg-white/80 backdrop-blur-md rounded-full border border-black/5 hover:bg-white hover:scale-105 transition-all shadow-sm text-black/40 hover:text-black group"
                     aria-label="Scroll to top"
                 >
-                    <ArrowUp className="w-6 h-6 group-hover:-translate-y-0.5 transition-transform" />
+                    <ArrowUp className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
                 </button>
             </nav>
 
