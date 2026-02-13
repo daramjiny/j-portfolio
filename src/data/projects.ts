@@ -17,6 +17,7 @@ export interface Project {
     client?: string;
     role?: string;
     link?: string;
+    maxWidth?: number;
 }
 
 import projectNtsThumb from '../assets/project-nts-thumb.jpg';
@@ -46,25 +47,32 @@ import projectJjangyouThumb from '../assets/project-jjangyou-thumb.jpg';
 import projectModetourThumb from '../assets/project-modetour-thumb.jpg';
 import projectSiwonPakThumb from '../assets/project-siwonpak-thumb.jpg';
 import projectSiwonPakDetail from '../assets/project-siwonpak-detail.jpg';
+import projectNtsDetail from '../assets/project-nts-detail.jpg';
+import projectOliveDetail from '../assets/project-olive-detail.jpg';
+import projectClearDetail from '../assets/project-clear-detail.jpg';
+import projectModetourDetail from '../assets/project-modetour-detail.jpg';
+import projectEucerinDetail from '../assets/project-eucerin-detail.jpg';
+import projectSiwonProDetail from '../assets/project-siwonpro-detail.jpg';
 import projectSiwonProThumb from '../assets/project-siwonpro-thumb.jpg';
 
 export const projects: Project[] = [
     {
         id: "government-promo",
-        title: "Government Promotion Page",
-        description: "Responsive landing page for public sector promotion with accessible design and clear information hierarchy.",
-        fullDescription: "Designed and developed a comprehensive promotion page for a government agency. The project focused on accessibility, clarity, and trust. Key features include a responsive layout optimized for all devices, clear call-to-action sections, and strictly adhering to web accessibility standards (WCAG) to ensure information is available to all citizens.",
+        title: "국세청 Promotion Page",
+        description: "국세청 전자(세금)계산서 프로모션 랜딩페이지",
+        fullDescription: "표와 순서도 및 탭메뉴를 이용해서 사용자들이 전자세금서의 발급 과정 및 의미를 쉽고 간편하게 확인할 수 있도록하고 신뢰성을 주면서 눈에 띄는 색상을 주로 사용하여 디자인했습니다.",
         tags: ["Public Sector", "Landing Page", "Responsive", "Accessibility"],
-        year: "2024",
+        year: "2017",
         category: "PAGE",
         image: projectNtsThumb,
-        client: "National Tax Service",
-        role: "UI/UX Designer",
+        client: "국세청",
+        role: "Web Designer",
+        detailImage: projectNtsDetail,
     },
     {
         id: "hansot-bidding",
         title: "한솥도시락 bidding page",
-        description: "한솥도시락의 요일별 메뉴를 한솥 브랜드 색상을 이용해 친근하게 웹툰 스타일로 디자인했습니다. 폰트의 종류나 색상은 제한적으로 사용하여 자칫 지저분해보일 수 있는 부분들을 최소화하도록 노력했습니다.",
+        description: "한솥도시락의 요일별 메뉴를 한솥 브랜드 색상을 이용해 친근하게 웹툰 스타일로 디자인했습니다.",
         fullDescription: "한솥도시락의 요일별 메뉴를 한솥 브랜드 색상을 이용해 친근하게 웹툰 스타일로 디자인했습니다. 폰트의 종류나 색상은 제한적으로 사용하여 자칫 지저분해보일 수 있는 부분들을 최소화하도록 노력했습니다.",
         tags: ["Landing Page", "Web Design", "Promotion"],
         year: "2016",
@@ -85,6 +93,7 @@ export const projects: Project[] = [
         image: projectEucerinThumb,
         client: "Lumière Beauty",
         role: "UI/UX Designer",
+        detailImage: projectEucerinDetail,
     },
     {
         id: "clear-project",
@@ -97,6 +106,7 @@ export const projects: Project[] = [
         image: projectClearThumb,
         client: "Clear Corp",
         role: "UI Designer",
+        detailImage: projectClearDetail,
     },
     {
         id: "olive-young-campaign",
@@ -109,6 +119,7 @@ export const projects: Project[] = [
         image: projectOliveThumb,
         client: "Olive Young",
         role: "Web Designer",
+        detailImage: projectOliveDetail,
     },
     // New Projects Added
     {
@@ -301,6 +312,7 @@ export const projects: Project[] = [
         category: "PAGE",
         image: projectModetourThumb,
         client: "Modetour",
+        detailImage: projectModetourDetail,
     },
     {
         id: "siwon-landing",
@@ -324,5 +336,6 @@ export const projects: Project[] = [
         category: "PAGE",
         image: projectSiwonProThumb,
         client: "Siwon School",
+        detailImage: projectSiwonProDetail,
     },
 ];

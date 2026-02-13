@@ -2,7 +2,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { ArrowLeft, ArrowUp, ExternalLink, Github, Calendar, User, Briefcase } from "lucide-react";
 import { projects } from "@/data/projects";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Footer } from "@/app/components/Footer";
 import { LockScreenSlider } from "@/app/components/LockScreenSlider";
 
@@ -30,6 +30,8 @@ export function ProjectDetail() {
             </div>
         );
     }
+
+    const [imageMaxWidth, setImageMaxWidth] = useState<string | number>('100%');
 
     return (
         <motion.div
@@ -63,7 +65,7 @@ export function ProjectDetail() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
                     className={`relative h-auto min-h-[40vh] lg:min-h-screen order-1 lg:order-1 ${project.id === "himart-mobile" ? "bg-white" : "bg-black/5"
-                        }`}
+                        } ${project.category === "PAGE" ? "p-8 lg:p-20 flex items-center justify-center" : ""}`}
                 >
                     {project.id === "himart-mobile" ? (
                         <div className="relative w-full py-12 flex items-center justify-center overflow-hidden h-auto lg:h-screen lg:sticky lg:top-0">
@@ -73,7 +75,19 @@ export function ProjectDetail() {
                         <img
                             src={project.detailImage || project.image}
                             alt={project.title}
-                            className="w-full h-auto block"
+                            onLoad={(e) => {
+                                const img = e.target as HTMLImageElement;
+                                if (project.category === "PAGE") {
+                                    // If maxWidth is manually set, use it. Otherwise, use naturalWidth / 2 for Retina scaling.
+                                    if (project.maxWidth) {
+                                        setImageMaxWidth(`${project.maxWidth}px`);
+                                    } else {
+                                        setImageMaxWidth(`${img.naturalWidth / 2}px`);
+                                    }
+                                }
+                            }}
+                            style={{ maxWidth: project.category === "PAGE" ? imageMaxWidth : '100%' }}
+                            className={`h-auto block ${project.category === "PAGE" ? "w-full shadow-[0_4px_30px_rgba(0,0,0,0.08)]" : "w-full"}`}
                         />
                     )}
                 </motion.div>
@@ -117,7 +131,7 @@ export function ProjectDetail() {
                                 <div className="space-y-1">
                                     <div className="flex items-center gap-2 text-black/50 text-xs uppercase tracking-wider">
                                         <Briefcase className="w-3 h-3 text-black/40" />
-                                        <span>Category (EN)</span>
+                                        <span>Category</span>
                                     </div>
                                     <p className="font-medium text-sm lg:text-base">{project.category}</p>
                                 </div>
@@ -138,9 +152,8 @@ export function ProjectDetail() {
                                 className="space-y-6"
                             >
                                 <h3 className="text-lg font-medium">Overview</h3>
-                                <p className="text-base lg:text-lg text-black/70 leading-relaxed text-balance">
+                                <p className="text-base lg:text-lg text-black/70 leading-relaxed text-justify">
                                     {project.fullDescription || project.description}
-
                                 </p>
                             </motion.div>
 
@@ -151,7 +164,7 @@ export function ProjectDetail() {
                                 transition={{ duration: 0.6, delay: 0.3 }}
                                 className="space-y-4"
                             >
-                                <h3 className="text-lg font-medium">Technologies</h3>
+                                <h3 className="text-lg font-medium">Tags</h3>
                                 <div className="flex flex-wrap gap-2">
                                     {project.tags.map((tag) => (
                                         <span
