@@ -40,8 +40,8 @@ export function ProjectDetail() {
             exit={{ opacity: 0 }}
             className="bg-white"
         >
-            {/* Navigation - Fixed Top Right */}
-            <nav className="fixed top-6 right-6 z-50 flex gap-3">
+            {/* Navigation - Fixed Bottom Right on Mobile, Top Right on Desktop */}
+            <nav className="fixed bottom-6 right-6 lg:top-6 lg:bottom-auto lg:right-6 z-50 flex gap-3">
                 <Link
                     to="/#projects"
                     className="inline-flex p-2 bg-white/80 backdrop-blur-md rounded-full border border-black/5 hover:bg-white hover:scale-105 transition-all shadow-sm text-black/40 hover:text-black"
