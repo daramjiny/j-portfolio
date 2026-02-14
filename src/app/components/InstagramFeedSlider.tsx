@@ -11,24 +11,39 @@ const slides = [
         id: 1,
         image: imgRectangle3468500,
         bgColor: 'from-orange-100 to-orange-50',
+        color: '#FFF3E0', // Soft Orange
     },
     {
         id: 2,
         image: imgRectangle3468501,
         bgColor: 'from-blue-100 to-blue-50',
+        color: '#E3F2FD', // Soft Blue
     },
     {
         id: 3,
         image: imgRectangle3468502,
         bgColor: 'from-pink-100 to-pink-50',
+        color: '#FCE4EC', // Soft Pink
     },
 ];
 
-export function InstagramFeedSlider() {
+interface InstagramFeedSliderProps {
+    onColorChange?: (color: string) => void;
+}
+
+export function InstagramFeedSlider({ onColorChange }: InstagramFeedSliderProps) {
     const [[currentIndex, direction], setCurrentIndex] = useState([0, 0]);
     const [isLiked, setIsLiked] = useState(false);
     const [isSaved, setIsSaved] = useState(false);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+    // Notify parent of color change
+    useEffect(() => {
+        if (onColorChange) {
+            onColorChange(slides[currentIndex].color);
+        }
+    }, [currentIndex, onColorChange]);
+
 
     const slideVariants = {
         enter: (direction: number) => ({
