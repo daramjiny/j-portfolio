@@ -98,7 +98,7 @@ export function InstagramFeedSlider() {
     };
 
     return (
-        <div className="w-full h-full min-h-[600px] relative overflow-hidden flex flex-col items-center justify-start pt-24 pb-48">
+        <div className="w-full min-h-[600px] flex flex-col items-center justify-center p-6 relative overflow-hidden">
             <div className="absolute inset-0 z-0 pointer-events-none"
                 style={{
                     background: `
@@ -294,10 +294,6 @@ export function InstagramFeedSlider() {
                     </button>
                 </div>
 
-                {/* Timestamp */}
-                <div className="px-4 pb-4">
-                    <p className="text-xs text-gray-400 uppercase">15 hours ago</p>
-                </div>
             </motion.div>
 
             {/* Slide Counter */}
