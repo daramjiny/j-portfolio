@@ -98,7 +98,7 @@ export function InstagramFeedSlider() {
     };
 
     return (
-        <div className="w-full min-h-[600px] flex flex-col items-center justify-start py-12 lg:pt-32 lg:pb-32 relative overflow-hidden">
+        <div className="w-full min-h-[600px] flex flex-col items-center justify-center p-6 relative overflow-hidden">
             <div className="absolute inset-0 z-0 pointer-events-none"
                 style={{
                     background: `
@@ -116,7 +116,7 @@ export function InstagramFeedSlider() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="relative z-20 w-full max-w-[480px] bg-white rounded-2xl shadow-2xl overflow-hidden"
+                className="relative z-20 w-full max-w-[480px] bg-white rounded-2xl overflow-hidden"
             >
                 {/* Post Header */}
                 <div className="flex items-center justify-between p-4 border-b border-gray-100">
