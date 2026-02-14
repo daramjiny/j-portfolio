@@ -33,7 +33,6 @@ export function ProjectDetail() {
     }
 
     const [imageMaxWidth, setImageMaxWidth] = useState<string | number>('100%');
-    const [activeBgColor, setActiveBgColor] = useState<string>('transparent');
 
     return (
         <motion.div
@@ -56,11 +55,8 @@ export function ProjectDetail() {
                             <LockScreenSlider />
                         </div>
                     ) : project.id === "emart-mall-face" ? (
-                        <div
-                            className="relative w-full py-12 lg:pt-24 flex items-center lg:items-start justify-center overflow-hidden h-auto lg:h-screen lg:sticky lg:top-0 transition-colors duration-700 ease-in-out"
-                            style={{ backgroundColor: activeBgColor }}
-                        >
-                            <InstagramFeedSlider onColorChange={setActiveBgColor} />
+                        <div className="relative w-full py-12 lg:pt-24 flex items-center lg:items-start justify-center overflow-hidden h-auto lg:h-screen lg:sticky lg:top-0">
+                            <InstagramFeedSlider />
                         </div>
                     ) : (
                         <div className="w-full">
