@@ -55,7 +55,7 @@ export function ProjectDetail() {
                             <LockScreenSlider />
                         </div>
                     ) : project.id === "emart-mall-face" ? (
-                        <div className="relative w-full py-12 lg:pt-24 flex items-center lg:items-start justify-center overflow-hidden h-auto lg:h-screen lg:sticky lg:top-0">
+                        <div className="relative w-full h-auto lg:h-screen lg:sticky lg:top-0">
                             <InstagramFeedSlider />
                         </div>
                     ) : (
