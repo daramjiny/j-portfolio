@@ -11,38 +11,27 @@ const slides = [
         id: 1,
         image: imgRectangle3468500,
         bgColor: 'from-orange-100 to-orange-50',
-        color: '#FFF3E0', // Soft Orange
+        color: '#FF8737', // Soft Orange
     },
     {
         id: 2,
         image: imgRectangle3468501,
-        bgColor: 'from-blue-100 to-blue-50',
-        color: '#E3F2FD', // Soft Blue
+        bgColor: 'from-blue-100 to-pink-50',
+        color: '#FFA5AC', // Soft pink
     },
     {
         id: 3,
         image: imgRectangle3468502,
-        bgColor: 'from-pink-100 to-pink-50',
-        color: '#FCE4EC', // Soft Pink
+        bgColor: 'from-pink-100 to-blue-50',
+        color: '#4E98FF', // Soft Pink
     },
 ];
 
-interface InstagramFeedSliderProps {
-    onColorChange?: (color: string) => void;
-}
-
-export function InstagramFeedSlider({ onColorChange }: InstagramFeedSliderProps) {
+export function InstagramFeedSlider() {
     const [[currentIndex, direction], setCurrentIndex] = useState([0, 0]);
     const [isLiked, setIsLiked] = useState(false);
     const [isSaved, setIsSaved] = useState(false);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
-    // Notify parent of color change
-    useEffect(() => {
-        if (onColorChange) {
-            onColorChange(slides[currentIndex].color);
-        }
-    }, [currentIndex, onColorChange]);
 
 
     const slideVariants = {
@@ -109,13 +98,25 @@ export function InstagramFeedSlider({ onColorChange }: InstagramFeedSliderProps)
     };
 
     return (
-        <div className="w-full max-w-[480px] mx-auto">
+        <div className="w-full h-full min-h-[600px] relative overflow-hidden flex flex-col items-center justify-start pt-24 pb-48">
+            <div className="absolute inset-0 z-0 pointer-events-none"
+                style={{
+                    background: `
+                      radial-gradient(circle at 50% 50%, ${slides[currentIndex].color} 0%, rgba(255,255,255,0) 62%),
+                      radial-gradient(circle at 50% 50%, ${slides[currentIndex].color} 0%, rgba(255,255,255,0) 45%)
+                    `,
+                    transition: "background 0.5s ease",
+                    opacity: 0.75,
+                    filter: "saturate(1.2)",
+                }}
+            />
+
             {/* Instagram Post Container */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="bg-white rounded-2xl shadow-2xl overflow-hidden"
+                className="relative z-20 w-full max-w-[480px] bg-white rounded-2xl shadow-2xl overflow-hidden"
             >
                 {/* Post Header */}
                 <div className="flex items-center justify-between p-4 border-b border-gray-100">
@@ -304,7 +305,7 @@ export function InstagramFeedSlider({ onColorChange }: InstagramFeedSliderProps)
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="text-center mt-6 text-gray-600"
+                className="relative z-20 text-center mt-6 text-gray-600"
             >
                 <p className="text-sm font-medium">
                     {currentIndex + 1} / {slides.length}
