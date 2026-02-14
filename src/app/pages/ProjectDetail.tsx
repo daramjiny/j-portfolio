@@ -5,6 +5,7 @@ import { projects } from "@/data/projects";
 import { useEffect, useState } from "react";
 import { Footer } from "@/app/components/Footer";
 import { LockScreenSlider } from "@/app/components/LockScreenSlider";
+import { InstagramFeedSlider } from "@/app/components/InstagramFeedSlider";
 
 export function ProjectDetail() {
     const { id } = useParams();
@@ -52,6 +53,10 @@ export function ProjectDetail() {
                     {project.id === "himart-mobile" ? (
                         <div className="relative w-full py-12 flex items-center justify-center overflow-hidden h-auto lg:h-screen lg:sticky lg:top-0">
                             <LockScreenSlider />
+                        </div>
+                    ) : project.id === "emart-mall-face" ? (
+                        <div className="relative w-full py-12 flex items-center justify-center overflow-hidden h-auto lg:h-screen lg:sticky lg:top-0">
+                            <InstagramFeedSlider />
                         </div>
                     ) : (
                         <div className="w-full">
