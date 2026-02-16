@@ -113,7 +113,7 @@ export function InstagramFeedSlider() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="relative z-20 w-full max-w-[480px] bg-white rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.05)] overflow-hidden"
+                className="relative z-20 w-full max-w-[480px] bg-white rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.1)] md:shadow-[0_0_20px_rgba(0,0,0,0.05)] overflow-hidden"
             >
                 {/* Post Header */}
                 <div className="flex items-center justify-between p-4 border-b border-gray-100">
