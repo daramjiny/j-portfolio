@@ -99,8 +99,8 @@ export function InstagramFeedSlider() {
             <div className="absolute inset-0 z-0 pointer-events-none"
                 style={{
                     background: `
-                      radial-gradient(circle at 50% 50%, ${slides[currentIndex].color} 0%, rgba(255,255,255,0) 50%),
-                      radial-gradient(circle at 50% 50%, ${slides[currentIndex].color} 0%, rgba(255,255,255,0) 35%)
+                      radial-gradient(circle at 50% 50%, ${slides[currentIndex].color} 0%, rgba(255,255,255,0) 70%),
+                      radial-gradient(circle at 50% 50%, ${slides[currentIndex].color} 0%, rgba(255,255,255,0) 50%)
                     `,
                     transition: "background 0.5s ease",
                     opacity: 0.7,
