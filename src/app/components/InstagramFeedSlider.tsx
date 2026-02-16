@@ -95,12 +95,12 @@ export function InstagramFeedSlider() {
     };
 
     return (
-        <div className="w-full min-h-[400px] flex flex-col items-center justify-start pt-2 pb-2 md:pt-75 md:pb-60 px-6 relative overflow-hidden">
+        <div className="w-full min-h-[400px] flex flex-col items-center justify-start pt-6 pb-6 md:pt-75 md:pb-60 px-6 relative overflow-hidden">
             <div className="absolute inset-0 z-0 pointer-events-none"
                 style={{
                     background: `
-                      radial-gradient(circle at 50% 50%, ${slides[currentIndex].color} 0%, rgba(255,255,255,0) 70%),
-                      radial-gradient(circle at 50% 50%, ${slides[currentIndex].color} 0%, rgba(255,255,255,0) 50%)
+                      radial-gradient(circle at 50% 50%, ${slides[currentIndex].color} 0%, rgba(255,255,255,0) 50%),
+                      radial-gradient(circle at 50% 50%, ${slides[currentIndex].color} 0%, rgba(255,255,255,0) 35%)
                     `,
                     transition: "background 0.5s ease",
                     opacity: 0.7,
