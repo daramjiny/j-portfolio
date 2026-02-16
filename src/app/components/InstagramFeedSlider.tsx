@@ -95,7 +95,7 @@ export function InstagramFeedSlider() {
     };
 
     return (
-        <div className="w-full min-h-[600px] flex flex-col items-center justify-start pt-20 pb-20 md:pt-75 md:pb-60 px-6 relative overflow-hidden">
+        <div className="w-full min-h-[500px] flex flex-col items-center justify-start pt-10 pb-10 md:pt-75 md:pb-60 px-6 relative overflow-hidden">
             <div className="absolute inset-0 z-0 pointer-events-none"
                 style={{
                     background: `
