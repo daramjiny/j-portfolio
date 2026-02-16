@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, PanInfo } from 'motion/react';
-import { ChevronLeft, ChevronRight, Heart, MessageCircle, Send, Bookmark, MoreHorizontal } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MessageCircle, MoreHorizontal, ThumbsUp, Share2 } from 'lucide-react';
 import imgRectangle3468500 from "../../assets/3a7e4d3060d765b4d6115890a3fa00acd4e2cf95.png";
 import imgRectangle3468501 from "../../assets/8953c2c9ff93dc5485e6993b523a75140d675363.png";
 import imgRectangle3468502 from "../../assets/7049b54f07cc197be3cfb3ddbdbe6fc284d1a03a.png";
@@ -11,7 +11,7 @@ const slides = [
         id: 1,
         image: imgRectangle3468500,
         bgColor: 'from-orange-100 to-orange-50',
-        color: '#FF8737', // Soft Orange
+        color: '#ffac37ff', // Soft Orange
     },
     {
         id: 2,
@@ -30,29 +30,26 @@ const slides = [
 export function InstagramFeedSlider() {
     const [[currentIndex, direction], setCurrentIndex] = useState([0, 0]);
     const [isLiked, setIsLiked] = useState(false);
-    const [isSaved, setIsSaved] = useState(false);
+
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
 
     const slideVariants = {
         enter: (direction: number) => ({
-            x: direction > 0 ? 1000 : -1000,
-            opacity: 0,
-            scale: 0.9,
+            x: direction > 0 ? '100%' : '-100%',
+            opacity: 1,
             zIndex: 1,
         }),
         center: {
             x: 0,
             opacity: 1,
-            scale: 1,
             zIndex: 2,
         },
-        exit: {
-            x: 0,
-            opacity: 0,
-            scale: 1.05,
+        exit: (direction: number) => ({
+            x: direction < 0 ? '100%' : '-100%',
+            opacity: 1,
             zIndex: 0,
-        },
+        }),
     };
 
     const swipeConfidenceThreshold = 10000;
@@ -80,7 +77,7 @@ export function InstagramFeedSlider() {
 
         const interval = setInterval(() => {
             paginate(1);
-        }, 4000);
+        }, 3000);
 
         return () => clearInterval(interval);
     }, [currentIndex, isAutoPlaying]);
@@ -98,15 +95,15 @@ export function InstagramFeedSlider() {
     };
 
     return (
-        <div className="w-full min-h-[600px] flex flex-col items-center justify-start pt-24 pb-32 px-6 relative overflow-hidden">
+        <div className="w-full min-h-[600px] flex flex-col items-center justify-start pt-75 pb-60 px-6 relative overflow-hidden">
             <div className="absolute inset-0 z-0 pointer-events-none"
                 style={{
                     background: `
-                      radial-gradient(circle at 50% 50%, ${slides[currentIndex].color} 0%, rgba(255,255,255,0) 62%),
-                      radial-gradient(circle at 50% 50%, ${slides[currentIndex].color} 0%, rgba(255,255,255,0) 45%)
+                      radial-gradient(circle at 50% 50%, ${slides[currentIndex].color} 0%, rgba(255,255,255,0) 50%),
+                      radial-gradient(circle at 50% 50%, ${slides[currentIndex].color} 0%, rgba(255,255,255,0) 35%)
                     `,
                     transition: "background 0.5s ease",
-                    opacity: 0.75,
+                    opacity: 0.7,
                     filter: "saturate(1.2)",
                 }}
             />
@@ -116,7 +113,7 @@ export function InstagramFeedSlider() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="relative z-20 w-full max-w-[480px] bg-white rounded-2xl shadow-2xl overflow-hidden"
+                className="relative z-20 w-full max-w-[480px] bg-white rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.05)] overflow-hidden"
             >
                 {/* Post Header */}
                 <div className="flex items-center justify-between p-4 border-b border-gray-100">
@@ -150,9 +147,19 @@ export function InstagramFeedSlider() {
                     </motion.button>
                 </div>
 
+                {/* Caption (Facebook Style: Top) */}
+                <div className="px-4 py-3">
+                    <p className="text-sm text-gray-900 leading-relaxed">
+                        <span className="font-semibold">이마트 </span>
+                        <span className="text-gray-900">
+                            달콤한 빵으로 행복한 하루 시작하세요! 🥐✨
+                        </span>
+                    </p>
+                </div>
+
                 {/* Image Slider */}
                 <div
-                    className="relative aspect-square bg-gradient-to-br overflow-hidden group select-none"
+                    className="relative aspect-square bg-gray-100 overflow-hidden group select-none"
                     onMouseEnter={handleInteraction}
                     onTouchStart={handleInteraction}
                     onWheel={handleWheel}
@@ -166,9 +173,8 @@ export function InstagramFeedSlider() {
                             animate="center"
                             exit="exit"
                             transition={{
-                                x: { type: "spring", stiffness: 300, damping: 30 },
-                                opacity: { duration: 0.4 },
-                                scale: { duration: 0.5 },
+                                x: { type: "tween", ease: "easeInOut", duration: 0.3 },
+                                opacity: { duration: 0.2 },
                             }}
                             drag="x"
                             dragConstraints={{ left: 0, right: 0 }}
@@ -181,8 +187,8 @@ export function InstagramFeedSlider() {
                                 alt={`Slide ${currentIndex + 1}`}
                                 className="w-full h-full object-contain pointer-events-none select-none"
                                 draggable={false}
-                                initial={{ scale: 1.1 }}
-                                animate={{ scale: 1 }}
+                                initial={{ opacity: 1 }}
+                                animate={{ opacity: 1 }}
                                 transition={{ duration: 0.6 }}
                             />
                         </motion.div>
@@ -213,85 +219,48 @@ export function InstagramFeedSlider() {
                     </motion.button>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="px-4 pt-3 pb-2">
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-4">
-                            <motion.button
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.9 }}
-                                onClick={() => setIsLiked(!isLiked)}
-                                className="group relative"
-                            >
-                                <motion.div
-                                    animate={isLiked ? { scale: [1, 1.3, 1] } : {}}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <Heart
-                                        className={`w-7 h-7 transition-colors ${isLiked ? 'fill-red-500 text-red-500' : 'text-gray-900'
-                                            }`}
-                                    />
-                                </motion.div>
-                                {isLiked && (
-                                    <motion.div
-                                        initial={{ scale: 0, opacity: 1 }}
-                                        animate={{ scale: 2, opacity: 0 }}
-                                        transition={{ duration: 0.6 }}
-                                        className="absolute inset-0 flex items-center justify-center"
-                                    >
-                                        <Heart className="w-7 h-7 fill-red-500 text-red-500" />
-                                    </motion.div>
-                                )}
-                            </motion.button>
-                            <motion.button
-                                whileHover={{ scale: 1.1, rotate: -15 }}
-                                whileTap={{ scale: 0.9 }}
-                            >
-                                <MessageCircle className="w-7 h-7 text-gray-900" />
-                            </motion.button>
-                            <motion.button
-                                whileHover={{ scale: 1.1, rotate: 15 }}
-                                whileTap={{ scale: 0.9 }}
-                            >
-                                <Send className="w-7 h-7 text-gray-900" />
-                            </motion.button>
+                {/* Likes Count & Info */}
+                <div className="px-4 py-2 flex items-center justify-between text-xs text-gray-500 border-b border-gray-100 mx-4">
+                    <div className="flex items-center gap-1">
+                        <div className="bg-[#1877F2] rounded-full p-1">
+                            <ThumbsUp className="w-2 h-2 text-white fill-white" />
                         </div>
-                        <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            onClick={() => setIsSaved(!isSaved)}
-                        >
-                            <Bookmark
-                                className={`w-7 h-7 transition-colors ${isSaved ? 'fill-gray-900 text-gray-900' : 'text-gray-900'
-                                    }`}
-                            />
-                        </motion.button>
+                        <span>{isLiked ? '651' : '650'}</span>
+                    </div>
+                    <div className="flex gap-3">
+                        <span>48 comments</span>
+                        <span>5 shares</span>
                     </div>
                 </div>
 
-                {/* Likes Count */}
-                <div className="px-4 pb-2">
-                    <motion.p
-                        key={isLiked ? 'liked' : 'not-liked'}
-                        initial={{ scale: 1 }}
-                        animate={{ scale: [1, 1.05, 1] }}
-                        className="font-semibold text-sm text-gray-900"
-                    >
-                        {isLiked ? '651' : '650'} likes
-                    </motion.p>
-                </div>
+                {/* Action Buttons (Facebook Style) */}
+                <div className="px-2 py-1">
+                    <div className="flex items-center justify-between">
+                        <motion.button
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => setIsLiked(!isLiked)}
+                            className={`flex-1 flex items-center justify-center gap-2 py-2 hover:bg-gray-50 rounded-lg transition-colors ${isLiked ? 'text-[#1877F2]' : 'text-gray-600'}`}
+                        >
+                            <ThumbsUp className={`w-5 h-5 ${isLiked ? 'fill-[#1877F2]' : ''}`} />
+                            <span className="font-medium text-sm">Like</span>
+                        </motion.button>
 
-                {/* Caption */}
-                <div className="px-4 pb-3">
-                    <p className="text-sm text-gray-900">
-                        <span className="font-semibold">이마트 </span>
-                        <span className="text-gray-700">
-                            달콤한 빵으로 행복한 하루 시작하세요! 🥐✨
-                        </span>
-                    </p>
-                    <button className="text-gray-500 text-sm mt-1">
-                        View all 48 comments
-                    </button>
+                        <motion.button
+                            whileTap={{ scale: 0.95 }}
+                            className="flex-1 flex items-center justify-center gap-2 py-2 hover:bg-gray-50 rounded-lg transition-colors text-gray-600"
+                        >
+                            <MessageCircle className="w-5 h-5" />
+                            <span className="font-medium text-sm">Comment</span>
+                        </motion.button>
+
+                        <motion.button
+                            whileTap={{ scale: 0.95 }}
+                            className="flex-1 flex items-center justify-center gap-2 py-2 hover:bg-gray-50 rounded-lg transition-colors text-gray-600"
+                        >
+                            <Share2 className="w-5 h-5" />
+                            <span className="font-medium text-sm">Share</span>
+                        </motion.button>
+                    </div>
                 </div>
 
             </motion.div>
@@ -305,9 +274,6 @@ export function InstagramFeedSlider() {
             >
                 <p className="text-sm font-medium">
                     {currentIndex + 1} / {slides.length}
-                </p>
-                <p className="text-xs text-gray-400 mt-1">
-                    {isAutoPlaying ? 'Auto-playing' : 'Manual mode'} • Swipe or click arrows
                 </p>
             </motion.div>
         </div>

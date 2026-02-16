@@ -190,7 +190,7 @@ export function LockScreenSlider() {
             {/* Background Ambience */}
             <div className="absolute inset-0 z-0 opacity-30 pointer-events-none"
                 style={{
-                    background: `radial-gradient(circle at 50% 50%, ${slides[currentIndex].color}, transparent 70%)`,
+                    background: `radial-gradient(circle at 50% 50%, ${slides[currentIndex].color}, transparent 50%)`,
                     transition: 'background 0.5s ease'
                 }}
             />
