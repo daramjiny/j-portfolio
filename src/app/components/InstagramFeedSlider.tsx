@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence, PanInfo } from 'motion/react';
+import { useState, useEffect, useCallback } from 'react';
+import { motion, PanInfo } from 'motion/react';
+import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight, MessageCircle, MoreHorizontal, ThumbsUp, Share2 } from 'lucide-react';
 import imgRectangle3468500 from "../../assets/3a7e4d3060d765b4d6115890a3fa00acd4e2cf95.png";
 import imgRectangle3468501 from "../../assets/8953c2c9ff93dc5485e6993b523a75140d675363.png";
@@ -28,70 +29,50 @@ const slides = [
 ];
 
 export function InstagramFeedSlider() {
-    const [[currentIndex, direction], setCurrentIndex] = useState([0, 0]);
+    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, watchDrag: true });
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [isLiked, setIsLiked] = useState(false);
 
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
+    const scrollPrev = useCallback(() => {
+        if (emblaApi) emblaApi.scrollPrev();
+    }, [emblaApi]);
 
-    const slideVariants = {
-        enter: (direction: number) => ({
-            x: direction > 0 ? '100%' : '-100%',
-            opacity: 1,
-            zIndex: 1,
-        }),
-        center: {
-            x: 0,
-            opacity: 1,
-            zIndex: 2,
-        },
-        exit: (direction: number) => ({
-            x: direction < 0 ? '100%' : '-100%',
-            opacity: 1,
-            zIndex: 0,
-        }),
-    };
+    const scrollNext = useCallback(() => {
+        if (emblaApi) emblaApi.scrollNext();
+    }, [emblaApi]);
 
-    const swipeConfidenceThreshold = 10000;
-    const swipePower = (offset: number, velocity: number) => {
-        return Math.abs(offset) * velocity;
-    };
+    const onSelect = useCallback(() => {
+        if (!emblaApi) return;
+        setCurrentIndex(emblaApi.selectedScrollSnap());
+    }, [emblaApi, setCurrentIndex]);
 
-    const paginate = (newDirection: number) => {
-        const newIndex = (currentIndex + newDirection + slides.length) % slides.length;
-        setCurrentIndex([newIndex, newDirection]);
-    };
+    useEffect(() => {
+        if (!emblaApi) return;
+        onSelect();
+        emblaApi.on('select', onSelect);
+        emblaApi.on('reInit', onSelect);
+    }, [emblaApi, onSelect]);
 
-    const handleDragEnd = (e: MouseEvent | TouchEvent | PointerEvent, { offset, velocity }: PanInfo) => {
-        const swipe = swipePower(offset.x, velocity.x);
-
-        if (swipe < -swipeConfidenceThreshold) {
-            paginate(1);
-        } else if (swipe > swipeConfidenceThreshold) {
-            paginate(-1);
-        }
-    };
-
+    // Auto-play effect
     useEffect(() => {
         if (!isAutoPlaying) return;
 
-        const interval = setInterval(() => {
-            paginate(1);
-        }, 3000);
+        const timer = setInterval(() => {
+            if (emblaApi) emblaApi.scrollNext();
+        }, 5000);
 
-        return () => clearInterval(interval);
-    }, [currentIndex, isAutoPlaying]);
+        return () => clearInterval(timer);
+    }, [isAutoPlaying, emblaApi]);
 
     const handleInteraction = () => {
         setIsAutoPlaying(false);
     };
 
     const handleWheel = (e: React.WheelEvent) => {
-        if (e.deltaY > 0) {
-            paginate(1);
-        } else {
-            paginate(-1);
-        }
+        // Stop autoplay on manual scroll
+        handleInteraction();
     };
 
     return (
@@ -157,49 +138,37 @@ export function InstagramFeedSlider() {
                     </p>
                 </div>
 
-                {/* Image Slider */}
+                {/* Image Slider using Embla */}
                 <div
-                    className="relative aspect-square bg-gray-100 overflow-hidden group select-none"
+                    className="relative aspect-square bg-transparent overflow-hidden group select-none"
                     onMouseEnter={handleInteraction}
                     onTouchStart={handleInteraction}
                     onWheel={handleWheel}
                 >
-                    <AnimatePresence initial={false} custom={direction} mode="popLayout">
-                        <motion.div
-                            key={currentIndex}
-                            custom={direction}
-                            variants={slideVariants}
-                            initial="enter"
-                            animate="center"
-                            exit="exit"
-                            transition={{
-                                x: { type: "tween", ease: "easeInOut", duration: 0.3 },
-                                opacity: { duration: 0.2 },
-                            }}
-                            drag="x"
-                            dragConstraints={{ left: 0, right: 0 }}
-                            dragElastic={1}
-                            onDragEnd={handleDragEnd}
-                            className={`absolute inset-0 bg-gradient-to-br ${slides[currentIndex].bgColor} cursor-grab active:cursor-grabbing select-none`}
-                        >
-                            <motion.img
-                                src={slides[currentIndex].image}
-                                alt={`Slide ${currentIndex + 1}`}
-                                className="w-full h-full object-contain pointer-events-none select-none"
-                                draggable={false}
-                                initial={{ opacity: 1 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 0.6 }}
-                            />
-                        </motion.div>
-                    </AnimatePresence>
+                    <div className="overflow-hidden h-full w-full" ref={emblaRef}>
+                        <div className="flex h-full touch-pan-y">
+                            {slides.map((slide, idx) => (
+                                <div
+                                    key={slide.id}
+                                    className={`flex-[0_0_100%] min-w-0 relative bg-gradient-to-br ${slide.bgColor} flex items-center justify-center`}
+                                >
+                                    <img
+                                        src={slide.image}
+                                        alt={`Slide ${idx + 1}`}
+                                        className="w-full h-full object-contain pointer-events-none select-none"
+                                        draggable={false}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
 
                     {/* Navigation Arrows */}
                     <motion.button
                         whileHover={{ scale: 1.1, x: -2 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={() => {
-                            paginate(-1);
+                            scrollPrev();
                             handleInteraction();
                         }}
                         className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/20 backdrop-blur-md rounded-full flex items-center justify-center transition-all z-10 opacity-0 group-hover:opacity-100 hover:bg-black/40"
@@ -210,7 +179,7 @@ export function InstagramFeedSlider() {
                         whileHover={{ scale: 1.1, x: 2 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={() => {
-                            paginate(1);
+                            scrollNext();
                             handleInteraction();
                         }}
                         className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/20 backdrop-blur-md rounded-full flex items-center justify-center transition-all z-10 opacity-0 group-hover:opacity-100 hover:bg-black/40"

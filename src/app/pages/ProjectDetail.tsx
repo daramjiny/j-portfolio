@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Footer } from "@/app/components/Footer";
 import { LockScreenSlider } from "@/app/components/LockScreenSlider";
 import { InstagramFeedSlider } from "@/app/components/InstagramFeedSlider";
+import { InstagramPost } from "@/app/components/InstagramPost";
 
 export function ProjectDetail() {
     const { id } = useParams();
@@ -57,6 +58,10 @@ export function ProjectDetail() {
                     ) : project.id === "emart-mall-face" ? (
                         <div className="relative w-full py-16 lg:py-28 min-h-[720px] flex items-center justify-center overflow-hidden h-auto lg:h-screen lg:sticky lg:top-0">
                             <InstagramFeedSlider />
+                        </div>
+                    ) : project.id === "emart-mall-insta" ? (
+                        <div className="relative w-full py-12 lg:py-20 min-h-[720px] flex items-center justify-center h-auto lg:h-screen lg:sticky lg:top-0">
+                            <InstagramPost />
                         </div>
                     ) : (
                         <div className="w-full">
